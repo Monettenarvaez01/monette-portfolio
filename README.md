@@ -52,6 +52,26 @@ npm run lint       # ESLint with the TypeScript parser and the React hooks rules
 - Motion is deliberately small: a short fade-in, small scroll reveals, hover lifts, a brief theme switch. All of it respects `prefers-reduced-motion` and the site's own Reduce motion switch.
 - The 3D gallery (`Carousel3D`) is optional. It is offered only on a desktop with a mouse or trackpad, with motion allowed, WebGL available and at least six gallery images, and it loads only when the visitor asks for it. The accessible grid is always there.
 
+## Content
+
+All page content comes from [`docs/content-inventory.md`](docs/content-inventory.md). Only items marked Approved there are published; everything else stays a visible placeholder.
+
+## Pre-launch checklist
+
+- [ ] Every PLACEHOLDER replaced with approved copy, or the section removed (`grep -rn PLACEHOLDER src index.html`)
+- [ ] Each project has its label, Monette's role, and permission to share; results only with evidence
+- [ ] Real portrait and alt text; email and LinkedIn URL set
+- [ ] Privacy page written and checked; site description and share image set
+- [ ] `npm run build` and `npm run lint` clean
+- [ ] Desktop test (1280-1920px): keyboard only, light and dark
+- [ ] **Tablet test** (iPad portrait 768-834px and landscape 1024-1194px; Android tablet ~800px): navigation, tab bar, bento, Work gallery, Contact form. Tablets below 1100px currently get the phone layout - confirm it reads well or adjust the breakpoint
+- [ ] Phone test (iPhone ~390px, small Android ~360px): tab bar, no sideways scroll, text size 200%
+- [ ] Screen reader pass (VoiceOver and NVDA) on all five pages
+- [ ] Reduced motion (OS setting and the site switch) on all five pages
+- [ ] Automated accessibility check (axe) clean on all five pages, both themes
+- [ ] 3D gallery: offered only on desktop with motion allowed; grid and lightbox work without it
+- [ ] LICENSE and attribution notices intact
+
 ## Credits
 
 - Template: [BrewedOps portfolio template](https://github.com/brewed-ops/portfolio-template). Its contour background (inspired by the landonorris.com site by OFF+BRAND, simplex noise by Ashima Arts / Ian McEwan, MIT) has been removed from this adaptation.

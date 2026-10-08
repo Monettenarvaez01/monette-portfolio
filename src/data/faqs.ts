@@ -4,26 +4,32 @@ export type QA = { q: string; a: string }
  * The questions founders ask before they write. Used by the FAQ accordion on
  * Contact. Keep each answer to two or three sentences.
  */
+// Questions for international founders hiring remote creative and executive
+// support. Every answer is Monette's to write. Never fill in availability,
+// response times, rates or guarantees she has not stated.
 export const FAQS: QA[] = [
-  // Questions are drafts for international founders; answers are Monette's to write.
   {
-    q: 'What do you help founders with?',
+    q: 'What kind of support can you offer a founder?',
     a: 'PLACEHOLDER - the strategy and hands-on support you offer, in two or three sentences.',
   },
   {
-    q: 'How do you work across timezones?',
-    a: 'PLACEHOLDER - your timezone, working hours and how you overlap with clients abroad.',
+    q: 'How do you work with founders in other countries and timezones?',
+    a: 'PLACEHOLDER - your location and how you handle working across timezones.',
   },
   {
-    q: 'How do we get started?',
+    q: 'How do we communicate and share work?',
+    a: 'PLACEHOLDER - the channels and tools you use with clients.',
+  },
+  {
+    q: 'How do you handle access to my accounts and confidential information?',
+    a: 'PLACEHOLDER - how you treat logins, documents and private information.',
+  },
+  {
+    q: 'How does ghostwriting work when posts go out under my name?',
+    a: 'PLACEHOLDER - how you capture a founder\u2019s voice and how approval works.',
+  },
+  {
+    q: 'What does getting started look like?',
     a: 'PLACEHOLDER - the first steps after someone writes to you.',
-  },
-  {
-    q: 'How do you handle confidential work?',
-    a: 'PLACEHOLDER - how you treat client access, information and ghostwritten work.',
-  },
-  {
-    q: 'How do you price your work?',
-    a: 'PLACEHOLDER - how you price (hourly, per project, retainer) and how a quote is put together.',
   },
 ]

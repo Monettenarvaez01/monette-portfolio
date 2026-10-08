@@ -24,13 +24,17 @@ const STORY = [
 
 const VALUES = ['PLACEHOLDER - a value you work by', 'PLACEHOLDER - a value you work by', 'PLACEHOLDER - a value you work by']
 
-/** Step names are the draft approved in the plan; the descriptions are hers to write. */
+/**
+ * The five steps are approved. Each description must describe how Monette
+ * actually works today, drawn from real work - never a capability she has
+ * not yet demonstrated (that belongs under "What I'm developing now").
+ */
 const METHOD = [
-  { title: 'Listen', body: 'PLACEHOLDER - how you learn what a founder needs.' },
-  { title: 'Research', body: 'PLACEHOLDER - what you look at: audience, competitors, the founder’s voice.' },
-  { title: 'Shape', body: 'PLACEHOLDER - how you turn observations into a direction.' },
-  { title: 'Create', body: 'PLACEHOLDER - how the work gets made.' },
-  { title: 'Refine', body: 'PLACEHOLDER - how you review, adjust and learn.' },
+  { title: 'Listen', body: 'PLACEHOLDER - from real work: how you learn what a founder needs.' },
+  { title: 'Research', body: 'PLACEHOLDER - from real work: what you actually look at before you start.' },
+  { title: 'Shape', body: 'PLACEHOLDER - from real work: how you turn what you found into a direction or plan.' },
+  { title: 'Create', body: 'PLACEHOLDER - from real work: what you make and how.' },
+  { title: 'Refine', body: 'PLACEHOLDER - from real work: how you review and adjust with the founder.' },
 ]
 
 const JOURNEY = [
@@ -129,7 +133,6 @@ export default function AboutPage() {
         <ul className="roles" role="list">
           {profile.roles.map((r, i) => (
             <li key={r} className={`roles__item${i === 0 ? ' roles__item--lead' : ''}`}>
-              {i === 0 && <span className="ed-eyebrow">Lead direction</span>}
               <span className="roles__name">{r}</span>
             </li>
           ))}

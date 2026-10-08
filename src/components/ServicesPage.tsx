@@ -68,7 +68,7 @@ export default function ServicesPage() {
 
       <section className="page__section svc svc--lead ed-panel" aria-labelledby="svc-lead-title">
         <header className="page__section-head">
-          <span className="ed-index">01 &middot; Primary direction</span>
+          <span className="ed-index">01</span>
           <h2 className="page__section-title" id="svc-lead-title">
             {lead.title}
           </h2>

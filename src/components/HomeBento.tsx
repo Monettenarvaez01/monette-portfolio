@@ -12,7 +12,7 @@ import {
 import Copy from '@/components/Copy'
 import { profile } from '@/data/profile'
 import { SERVICES } from '@/data/services'
-import { COLLECTIONS } from '@/data/work'
+import { COLLECTIONS, LABEL_KEY } from '@/data/work'
 
 /**
  * Home's bento: one card per thing a founder needs to know, each a link to
@@ -22,7 +22,7 @@ import { COLLECTIONS } from '@/data/work'
  *   Who I am      the portrait, into About
  *   How I think   a line in Monette's own words, into About's method
  *   What I do     the four services, into Services
- *   Strategy & Writing  the notebook, into Work
+ *   Ideas & Writing  the notebook, into Work's Strategy & Writing
  *   Let's talk    practical details, into Contact
  *
  * Nothing here invents a fact: every line is either confirmed (the names of
@@ -53,8 +53,10 @@ export default function HomeBento() {
         <ul className="bento__media bento__shelf" role="list" aria-label="Work collections">
           {COLLECTIONS.map((c) => (
             <li key={c.id} className="bento__sheet">
-              <span className={`ed-label ed-label--${c.label}`}>{c.short}</span>
-              <span className="bento__sheet-title">{c.title}</span>
+              <span className={`ed-label ed-label--${c.label}`}>
+                {LABEL_KEY.find((k) => k.label === c.label)?.name}
+              </span>
+              <span className="bento__sheet-title">{c.navLabel}</span>
             </li>
           ))}
         </ul>
@@ -91,7 +93,7 @@ export default function HomeBento() {
       </Link>
 
       <Link to="/work#strategy-writing" className="bento__card bento__card--writing">
-        <CardHead Icon={NotePencil} title="Strategy & Writing" desc="PLACEHOLDER - one line on what you write about." />
+        <CardHead Icon={NotePencil} title="Ideas & Writing" desc="PLACEHOLDER - one line on what you write about." />
         <span className="bento__media bento__lines" aria-hidden="true">
           <i />
           <i />

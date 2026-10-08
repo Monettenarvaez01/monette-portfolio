@@ -20,9 +20,10 @@ export type Collection = {
   id: CollectionId
   /** URL fragment on /work. */
   anchor: string
+  /** Full collection title, used as the section heading. */
   title: string
-  /** Short form for labels. */
-  short: string
+  /** Shorter name for navigation (Work contents, Home cards). */
+  navLabel: string
   /** The label its cards carry by default. */
   label: WorkLabel
   intro: string
@@ -33,7 +34,7 @@ export const COLLECTIONS: Collection[] = [
     id: 'client',
     anchor: 'client-work',
     title: 'Client Work',
-    short: 'Client',
+    navLabel: 'Client Work',
     label: 'client',
     intro: 'PLACEHOLDER - one or two lines introducing your commissioned work.',
   },
@@ -41,7 +42,7 @@ export const COLLECTIONS: Collection[] = [
     id: 'independent',
     anchor: 'independent-projects',
     title: 'Independent Projects',
-    short: 'Independent',
+    navLabel: 'Independent Projects',
     label: 'independent',
     intro: 'PLACEHOLDER - one or two lines introducing your self-initiated work.',
   },
@@ -49,7 +50,7 @@ export const COLLECTIONS: Collection[] = [
     id: 'writing',
     anchor: 'strategy-writing',
     title: 'Strategy & Writing',
-    short: 'Strategy',
+    navLabel: 'Ideas & Writing',
     label: 'concept',
     intro: 'PLACEHOLDER - one or two lines on how you think through brand, audience and voice.',
   },

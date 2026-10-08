@@ -31,7 +31,7 @@ export default function WorkPage() {
             <li key={c.id}>
               <a href={`#${c.anchor}`}>
                 <span className="ed-index">0{i + 1}</span>
-                {c.title}
+                {c.navLabel}
               </a>
             </li>
           ))}
