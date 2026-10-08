@@ -1,7 +1,7 @@
 /* ============================================
    ACCESSIBILITY MENU - fixed bottom-left
    The reviews widget's twin: navy panel, cream
-   text, one orange accent. Below it, the effect
+   text, one coral accent. Below it, the effect
    of each switch, keyed off `data-a11y-*` on
    <html> (written by lib/a11y.ts).
    ============================================ */
@@ -218,8 +218,6 @@
 :root[data-a11y-text='lg'] .shell__panel > * { zoom: 1.12; }
 :root[data-a11y-text='xl'] .rail__inner,
 :root[data-a11y-text='xl'] .shell__panel > * { zoom: 1.25; }
-:root[data-a11y-text] .shell__panel[data-fixed='true'] { overflow-y: auto; }
-:root[data-a11y-text] .home__showcase > .bento { height: auto; }
 
 /* High contrast: the muted grey climbs to near-ink and hairlines darken. */
 :root[data-a11y-contrast='true'] {

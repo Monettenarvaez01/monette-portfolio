@@ -6,7 +6,7 @@
      uses --on-coral (navy in both themes, 5.5:1). Never white on coral. */
   --navy:       #0B1E3F;   /* primary text, dark surfaces - 14.95:1 */
   --navy-ink:   #060C1A;   /* deepest navy, dark plates */
-  --cream:      #F4F4ED;   /* page ground (matches the shader's light base) */
+  --cream:      #F4F4ED;   /* page ground */
   --white:      #FFFFFF;
   --coral:      #E8735A;   /* accent fill: buttons, rules, dots, highlights */
   --coral-hover:#EE8D77;   /* coral fill hover */
@@ -93,14 +93,9 @@
   /* A plate that stays light in BOTH themes. Brand marks are external
      identifiers and need a constant backdrop to read against. */
   --plate:      #F4F4ED;
-  /* The opaque fill for sections that were written as white-on-navy back when
-     the shader inverted on scroll. It no longer does, so they carry their own
-     ground. Same navy in both themes: their type is light either way. */
+  /* The opaque fill for dark plates (Contact's FAQ panel). Same navy in both
+     themes: their type is light either way. */
   --panel-dark: #060C1A;
-
-  /* Verified badge - Facebook blue, not the site accent. It is a platform
-     signal, not brand furniture, so it does not follow --coral. */
-  --verified:   #0866FF;
 
   /* Ink for anything sitting on --plate. Both are constant across themes:
      a brand mark on a light plate must not invert with the page. */

@@ -5,8 +5,8 @@ import { motionReduced } from '@/lib/a11y'
 
 /**
  * The phone navigation: a bottom tab bar with Contact as the raised action
- * in the middle. Five slots for seven routes - Showcase and Testimonials
- * are reached from Home's explore row and from the pages that cite them.
+ * in the middle. Five slots, five pages - every page is one tap away, and
+ * every tab, Contact included, carries a visible text label.
  *
  * One pill marks the current tab and travels to the next one, stretching
  * toward it and settling (Liquid Glass). It skips Contact - the raised button
@@ -19,7 +19,7 @@ import { motionReduced } from '@/lib/a11y'
  */
 const TABS = [
   { label: 'Home', to: '/', Icon: House },
-  { label: 'Work', to: '/projects', Icon: FolderOpen },
+  { label: 'Work', to: '/work', Icon: FolderOpen },
   { label: 'Contact', to: '/contact', Icon: EnvelopeSimple, primary: true },
   { label: 'Services', to: '/services', Icon: Stack },
   { label: 'About', to: '/about', Icon: User },
@@ -129,6 +129,12 @@ export default function TabBar() {
         return
       }
       run = dy > 0 === run > 0 ? run + dy : dy
+      // Never slide away from under keyboard focus (focusing a tab can itself
+      // scroll the page).
+      if (nav.contains(document.activeElement)) {
+        delete nav.dataset.hidden
+        return
+      }
       if (y < ALWAYS_SHOW_ABOVE || run < -HIDE_AFTER) delete nav.dataset.hidden
       else if (run > HIDE_AFTER) nav.dataset.hidden = ''
     }
@@ -136,8 +142,14 @@ export default function TabBar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [reduced])
 
+  // A keyboard or switch user tabbing into a hidden bar must see where focus
+  // went: focus always brings the bar back.
+  const reveal = useCallback(() => {
+    delete navRef.current?.dataset.hidden
+  }, [])
+
   return (
-    <nav className="tabbar" aria-label="Primary navigation" ref={navRef}>
+    <nav className="tabbar" aria-label="Primary" ref={navRef} onFocus={reveal}>
       <span className="tabbar__pill" ref={pillRef} aria-hidden="true" data-off="" />
       {TABS.map(({ label, to, Icon, ...rest }) => {
         const primary = 'primary' in rest && rest.primary
@@ -147,14 +159,16 @@ export default function TabBar() {
             to={to}
             end={to === '/'}
             className={`tabbar__tab${primary ? ' tabbar__tab--primary' : ''}`}
-            aria-label={primary ? label : undefined}
           >
             {/* Outline at rest, filled when selected - the iOS tab convention. */}
             {({ isActive }) =>
               primary ? (
-                <span className="tabbar__fab">
-                  <Icon size={24} weight="bold" aria-hidden="true" />
-                </span>
+                <>
+                  <span className="tabbar__fab">
+                    <Icon size={24} weight="bold" aria-hidden="true" />
+                  </span>
+                  <span className="tabbar__label">{label}</span>
+                </>
               ) : (
                 <>
                   <Icon size={22} weight={isActive ? 'fill' : 'regular'} aria-hidden="true" />

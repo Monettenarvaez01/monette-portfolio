@@ -1,30 +1,29 @@
 export type QA = { q: string; a: string }
 
 /**
- * The questions people ask before they email. One list, used by the FAQ
- * accordion on the Contact view (and the legacy long-scroll FAQ section).
- * Five questions, two or three sentences each: the accordion sits in a
- * fixed panel and more than that pushes the email row off the plate.
+ * The questions founders ask before they write. Used by the FAQ accordion on
+ * Contact. Keep each answer to two or three sentences.
  */
 export const FAQS: QA[] = [
+  // Questions are drafts for international founders; answers are Monette's to write.
   {
-    q: 'What do you do?',
-    a: 'PLACEHOLDER - tell me what to put here: the kinds of work you take on, and who it is usually for.',
+    q: 'What do you help founders with?',
+    a: 'PLACEHOLDER - the strategy and hands-on support you offer, in two or three sentences.',
   },
   {
-    q: 'How fast can you start?',
-    a: 'PLACEHOLDER - tell me what to put here: your usual lead time for small fixes vs. larger projects, and your working hours.',
+    q: 'How do you work across timezones?',
+    a: 'PLACEHOLDER - your timezone, working hours and how you overlap with clients abroad.',
   },
   {
-    q: 'How much do you charge?',
-    a: 'PLACEHOLDER - tell me what to put here: how you price (hourly, per project, retainer) and how a quote is put together.',
+    q: 'How do we get started?',
+    a: 'PLACEHOLDER - the first steps after someone writes to you.',
   },
   {
-    q: 'Where are you based?',
-    a: 'PLACEHOLDER - tell me what to put here: your location or timezone, and which client timezones you overlap with.',
+    q: 'How do you handle confidential work?',
+    a: 'PLACEHOLDER - how you treat client access, information and ghostwritten work.',
   },
   {
-    q: 'What happens after I write?',
-    a: 'PLACEHOLDER - tell me what to put here: how fast you reply and what the next step looks like.',
+    q: 'How do you price your work?',
+    a: 'PLACEHOLDER - how you price (hourly, per project, retainer) and how a quote is put together.',
   },
 ]

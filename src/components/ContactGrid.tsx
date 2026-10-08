@@ -1,7 +1,8 @@
 import { useState, type FormEvent } from 'react'
 import { PaperPlaneTilt, CheckCircle, WarningCircle, EnvelopeSimple, ArrowUpRight, CaretDown } from '@/components/slab'
 import { FAQS } from '@/data/faqs'
-import { profile } from '@/data/profile'
+import { profile, emailIsPlaceholder } from '@/data/profile'
+import Copy from '@/components/Copy'
 import { readLead, submitLead, SubmitError, MAX_NAME, MAX_EMAIL, MAX_MESSAGE, type SubmitResult } from '@/lib/contact'
 
 /**
@@ -25,6 +26,9 @@ type Status = { kind: 'idle' } | { kind: 'sending' } | { kind: 'error'; note: st
 const FLIGHT_MS = 650
 
 const wait = (ms: number) => new Promise<void>((r) => setTimeout(r, ms))
+
+// A social link renders only once its real URL is in profile.ts.
+const socials = profile.socials.filter((s) => s.href)
 
 export default function ContactGrid() {
   const [status, setStatus] = useState<Status>({ kind: 'idle' })
@@ -58,18 +62,20 @@ export default function ContactGrid() {
   return (
     <section className="pgrid cgrid" aria-labelledby="contact-title">
       <header className="pgrid__head">
-        <span className="pgrid__eyebrow">FAQs / Contact</span>
+        <span className="pgrid__eyebrow">Contact</span>
         <h1 className="pgrid__title" id="contact-title">
-          Your contact headline goes here.
+          <Copy text="PLACEHOLDER - the Contact headline, in one short line." />
         </h1>
-        <p className="pgrid__lede">
-          PLACEHOLDER - tell me what to put here: one or two lines inviting people to write and saying what they get back.
-        </p>
+        <Copy
+          as="p"
+          text="PLACEHOLDER - one or two lines inviting founders to write, and what happens next."
+          className="pgrid__lede"
+        />
       </header>
 
       <div className="home__glass cgrid__glass">
-        {/* Left: the dark plate. What happens after you press send. */}
-        <aside className="cgrid__aside" aria-labelledby="contact-faq">
+        {/* Left: the dark plate - the FAQs and the direct email. */}
+        <section className="cgrid__aside" aria-labelledby="contact-faq">
           <div className="cgrid__aside-head">
             <span className="cgrid__eyebrow">FAQs</span>
             <h2 className="cgrid__aside-title" id="contact-faq">
@@ -96,7 +102,7 @@ export default function ContactGrid() {
                     <CaretDown size={14} weight="bold" className="cgrid__faq-caret" aria-hidden="true" />
                   </button>
                   <div className="cgrid__faq-a" id={`cfaq-${i}`} hidden={!isOpen}>
-                    <p>{f.a}</p>
+                    <Copy as="p" text={f.a} />
                   </div>
                 </li>
               )
@@ -106,10 +112,14 @@ export default function ContactGrid() {
           <div className="cgrid__direct">
             <a className="cgrid__mail" href={`mailto:${profile.email}`}>
               <EnvelopeSimple size={16} weight="fill" aria-hidden="true" />
-              <span>{profile.email}</span>
+              <span className={emailIsPlaceholder ? 'ed-placeholder' : undefined}>
+                {profile.email}
+                {emailIsPlaceholder && ' (placeholder)'}
+              </span>
             </a>
+            {socials.length > 0 && (
             <ul className="cgrid__socials" role="list">
-              {profile.socials.map((s) => (
+              {socials.map((s) => (
                 <li key={s.label}>
                   <a className="cgrid__social" href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.label}>
                     <img src={s.iconPath} alt="" loading="lazy" decoding="async" />
@@ -117,8 +127,9 @@ export default function ContactGrid() {
                 </li>
               ))}
             </ul>
+            )}
           </div>
-        </aside>
+        </section>
 
         {/* Right: the form. */}
         <div className="cgrid__panel">
@@ -128,12 +139,13 @@ export default function ContactGrid() {
                 <CheckCircle size={30} weight="fill" />
               </span>
               <h2 className="cgrid__done-title">
-                {status.via === 'webhook' ? 'Got it.' : 'Your mail app has it.'}
+                {status.via === 'webhook' ? 'Thank you, it\u2019s sent.' : 'Your email app has it.'}
               </h2>
+              {/* No reply-time promise here until Monette confirms one. */}
               <p className="cgrid__done-body">
                 {status.via === 'webhook'
-                  ? 'It is in my inbox and on my phone. You will hear back within one business day.'
-                  : 'The message is laid out and addressed. Press send there and you will hear back within one business day.'}
+                  ? 'Your message has been delivered.'
+                  : 'Your message is written out and addressed in your email app. Press send there to deliver it.'}
               </p>
               <button type="button" className="cgrid__again" onClick={() => setStatus({ kind: 'idle' })}>
                 Write another
@@ -197,7 +209,7 @@ export default function ContactGrid() {
                     {status.note}
                   </span>
                 ) : (
-                  <span className="cgrid__hint">Short reassurance line, e.g. your reply time.</span>
+                  <Copy text="PLACEHOLDER - your usual reply time." className="cgrid__hint" />
                 )}
               </div>
             </form>

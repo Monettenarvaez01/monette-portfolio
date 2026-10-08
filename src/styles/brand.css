@@ -15,37 +15,30 @@
 
 /* ---------- 1. Headline serif ----------
    Display and page titles only. Small UI labels, card meta and the nav stay
-   in the sans so the interface still reads as an interface.
-   .boot__title is the intro's copy of .home__title (boot.css: "change one,
-   change both"), so the two always share a selector here. */
+   in the sans so the interface still reads as an interface. */
 .home__title,
-.boot__title,
 .pgrid__title,
-.view__title,
+.page__title,
 .rail__name,
 .hprofile__name,
 .hsec__title,
 .bento__title,
-.sgrid__method-title,
-.sgrid__offers-title,
 .cgrid__aside-title,
 .cgrid__done-title,
 .legal-page__title,
-.thankyou__heading,
 .ed-serif {
   font-family: var(--font-serif);
   font-optical-sizing: auto;
   font-weight: 560;
   letter-spacing: -0.015em;
 }
-.home__title,
-.boot__title {
+.home__title {
   font-weight: 540;
   letter-spacing: -0.022em;
   line-height: 1.06;
 }
 .pgrid__title,
-.view__title { line-height: 1.1; }
+.page__title { line-height: 1.1; }
 /* The rail name and card titles are small; a touch more weight keeps the
    serif's thin strokes from going grey at that size. */
 .rail__name,

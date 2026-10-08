@@ -21,16 +21,37 @@ export const MAX_NAME = 80
 export const MAX_EMAIL = 254
 export const MAX_MESSAGE = 5000
 
-// Built from \u escapes so the source stays pure ASCII.
-// Control chars U+0000-U+001F and U+007F; when newlines are allowed, tab,
-// LF and CR survive. Zero-width and bidi marks always go.
-const CTRL_NO_NL = new RegExp('[\\u0000-\\u001F\\u007F]', 'g')
-const CTRL_KEEP_NL = new RegExp('[\\u0000-\\u0008\\u000B\\u000C\\u000E-\\u001F\\u007F]', 'g')
-const ZERO_WIDTH = new RegExp('[\\u200B-\\u200F\\u202A-\\u202E\\u2060\\uFEFF]', 'g')
+// Characters stripped from every field, checked by code point rather than a
+// regex literal (a control-character regex is exactly what no-control-regex
+// exists to flag, and here the stripping is the point):
+//   - C0 controls U+0000-U+001F and DEL U+007F. In the message, tab (U+0009),
+//     LF (U+000A) and CR (U+000D) survive so line breaks are kept.
+//   - Zero-width and bidi marks: U+200B-U+200F, U+202A-U+202E, U+2060, U+FEFF.
+const TAB = 0x09
+const LF = 0x0a
+const CR = 0x0d
+
+function isControl(code: number, allowNewlines: boolean): boolean {
+  if (allowNewlines && (code === TAB || code === LF || code === CR)) return false
+  return code <= 0x1f || code === 0x7f
+}
+
+function isInvisibleMark(code: number): boolean {
+  return (
+    (code >= 0x200b && code <= 0x200f) ||
+    (code >= 0x202a && code <= 0x202e) ||
+    code === 0x2060 ||
+    code === 0xfeff
+  )
+}
 
 export function sanitize(input: string, allowNewlines = false): string {
-  const controls = allowNewlines ? CTRL_KEEP_NL : CTRL_NO_NL
-  return input.replace(controls, '').replace(ZERO_WIDTH, '')
+  let out = ''
+  for (const ch of input) {
+    const code = ch.codePointAt(0) ?? 0
+    if (!isControl(code, allowNewlines) && !isInvisibleMark(code)) out += ch
+  }
+  return out
 }
 
 export const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/

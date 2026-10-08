@@ -5,11 +5,8 @@
  * with it instead of being rewritten.
  *
  * The initial value is written by an inline script in index.html so the first
- * paint is already the right palette. Default is LIGHT: this site's identity
- * is the cream contour page, dark is the opt-in.
- *
- * HeroCanvasV2 listens for the `themechange` event and eases its uDarkMix
- * uniform from it, so the shader crosses over on its own clock.
+ * paint is already the right palette. Default is LIGHT (cream); dark is the
+ * opt-in. A `themechange` event lets other controls (rail, QuickMenu) follow.
  */
 export type Theme = 'light' | 'dark'
 
@@ -48,7 +45,7 @@ type WithViewTransition = Document & {
  * the old one, until the edge clears the farthest corner. View Transitions
  * API; the origin and the required radius go to global.css as custom
  * properties. The API animates between captures of the page, so what sits
- * outside the circle holds still for the 1.2s - a crisp edge instead of
+ * outside the circle holds still for the 0.45s - a crisp edge instead of
  * a live wave. Browsers without it, and reduced-motion users,
  * get the instant switch.
  */

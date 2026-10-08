@@ -1,16 +1,7 @@
 import { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
-import { SealCheck } from '@/components/slab'
 import ThemeGlyph from './ThemeGlyph'
-import {
-  HomeIcon,
-  FolderIcon,
-  StackIcon,
-  CupIcon,
-  StarIcon,
-  UserIcon,
-  MessageIcon,
-} from './RailIcons'
+import { HomeIcon, FolderIcon, StackIcon, UserIcon, MessageIcon } from './RailIcons'
 import { getTheme, toggleTheme, type Theme } from '@/lib/theme'
 import { profile } from '@/data/profile'
 
@@ -27,13 +18,14 @@ import { profile } from '@/data/profile'
  */
 export const RAIL_LINKS = [
   { label: 'Home', to: '/', Icon: HomeIcon },
-  { label: 'Projects', to: '/projects', Icon: FolderIcon },
+  { label: 'Work', to: '/work', Icon: FolderIcon },
   { label: 'Services', to: '/services', Icon: StackIcon },
-  { label: 'Showcase', to: '/showcase', Icon: CupIcon },
-  { label: 'Testimonials', to: '/testimonials', Icon: StarIcon },
   { label: 'About', to: '/about', Icon: UserIcon },
-  { label: 'FAQs / Contact', to: '/contact', Icon: MessageIcon },
+  { label: 'Contact', to: '/contact', Icon: MessageIcon },
 ] as const
+
+// A social link renders only once its real URL is in profile.ts.
+const socials = profile.socials.filter((s) => s.href)
 
 export default function Rail() {
   const [theme, setThemeState] = useState<Theme>('light')
@@ -48,23 +40,19 @@ export default function Rail() {
         <span className="rail__avatar">
           <img
             src={profile.avatarSrc}
-            alt={profile.name}
+            alt={profile.avatarAlt}
             width={120}
             height={120}
           />
         </span>
 
-        <h2 className="rail__name">
-          {profile.name}
-          <SealCheck size={19} weight="fill" aria-label={profile.verifiedLabel} />
-        </h2>
-        <p className="rail__handle">
-          {profile.handle}
-        </p>
+        <p className="rail__name">{profile.name}</p>
+        <p className="rail__handle">{profile.role}</p>
 
         <div className="rail__actions">
+          {socials.length > 0 && (
           <ul className="rail__socials" role="list" aria-label="Social profiles">
-          {profile.socials.map(({ label, href, iconPath }) => (
+          {socials.map(({ label, href, iconPath }) => (
             <li key={label}>
               <a
                 className="rail__social"
@@ -84,6 +72,7 @@ export default function Rail() {
               </li>
             ))}
           </ul>
+          )}
 
           <button
             type="button"
@@ -95,7 +84,7 @@ export default function Rail() {
           </button>
         </div>
 
-        <nav className="rail__nav" aria-label="Sections">
+        <nav className="rail__nav" aria-label="Primary">
           <ul>
             {RAIL_LINKS.map(({ label, to, Icon }) => (
               <li key={to}>

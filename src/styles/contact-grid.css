@@ -1,18 +1,18 @@
 /* ============================================
-   CONTACT - the fixed viewport
-   Head, then one glass sheet split in two: what happens next on a dark
-   plate, the form on paper. Sized to the panel, so nothing here scrolls;
-   the message box takes whatever height is left.
+   CONTACT
+   Head, then one glass sheet split in two: the FAQs on a dark plate, the
+   form on paper. The sheet has a comfortable minimum height and the page
+   scrolls when the content needs more.
    ============================================ */
 
 .cgrid__glass { min-height: 0; }
 
 @media (min-width: 1100px) {
   .cgrid__glass {
-    height: 100%;
+    min-height: min(680px, 78vh);
     display: grid;
     grid-template-columns: minmax(280px, 0.8fr) minmax(0, 1.35fr);
-    grid-template-rows: minmax(0, 1fr);
+    grid-template-rows: auto;
     gap: clamp(16px, 1.6vw, 28px);
     align-items: stretch;
   }

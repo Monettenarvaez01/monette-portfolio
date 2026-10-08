@@ -65,7 +65,8 @@
     gap: 3px;
     height: 100%;
     border-radius: var(--radius-pill);
-    color: color-mix(in srgb, var(--navy) 60%, transparent);
+    /* --muted, not a navy tint: the resting labels have to clear 4.5:1. */
+    color: var(--muted);
     font-size: 10.5px;
     font-weight: 600;
     letter-spacing: 0.02em;
@@ -73,7 +74,7 @@
   }
   .tabbar__tab:active { transform: scale(0.94); }
   .tabbar__tab[aria-current='page'] { color: var(--navy); }
-  /* Not the raised button: its envelope keeps its own ink on the orange. */
+  /* Not the raised button: its envelope keeps its own ink on the coral. */
   .tabbar__tab[aria-current='page']:not(.tabbar__tab--primary) svg { color: var(--coral-ink); }
   .tabbar__tab:focus-visible { outline: 2px solid var(--coral); outline-offset: -6px; }
 
@@ -101,7 +102,7 @@
     margin-top: -24px;
     border-radius: 50%;
     background: var(--coral);
-    color: #0B1120;
+    color: var(--on-coral);
     box-shadow:
       inset 0 1px 0 rgba(255, 255, 255, 0.35),
       0 1px 2px rgba(6, 12, 26, 0.2),
@@ -109,12 +110,15 @@
     transition: transform var(--dur-med) var(--ease-out), background var(--dur-fast) var(--ease-out);
   }
   .tabbar__tab--primary[aria-current='page'] .tabbar__fab { background: var(--coral-hover); }
+  /* The raised button carries a visible label like every other tab. */
+  .tabbar__tab--primary { justify-content: flex-start; color: var(--navy); }
+  .tabbar__tab--primary .tabbar__fab { width: 50px; height: 50px; margin-top: -22px; flex: none; }
   .tabbar__tab--primary:active .tabbar__fab { transform: scale(0.92); transition-duration: 100ms; }
 
   /* Reading down a page the bar slides away; scrolling up brings it back
      (TabBar.tsx sets the data attributes). The spring takes over only once the
-     visitor scrolls (`data-live`), so the intro's rise-in (boot.css) keeps its
-     timing. Keyboard focus inside the bar always holds it on screen. */
+     visitor scrolls (`data-live`). Keyboard focus inside the bar always
+     brings it back (TabBar.tsx). */
   .tabbar[data-live] {
     transition: transform 470ms var(--spring-ui), opacity 200ms var(--ease-out);
     transition-delay: 0s;
@@ -265,7 +269,7 @@
     line-height: 1.1;
     color: var(--navy);
   }
-  .hprofile__verified { color: var(--verified); }
+
   /* Allowed to wrap: on a narrow phone the handle takes two lines rather
      than cutting the role short. */
   .hprofile__handle {
@@ -280,7 +284,7 @@
   .home__headline { flex-direction: column; }
 
   /* ---------- Home: stats, a compact glance widget ----------
-     One material with a bright top edge. Each fact is a stack - its orange
+     One material with a bright top edge. Each fact is a stack - its coral
      glyph, the number, the caption - kept tight so the plate stays compact.
      Numbers are tabular; hairlines stop short of the edges so they read as
      dividers, not a table. */
@@ -331,6 +335,9 @@
     font-variant-numeric: tabular-nums;
     color: var(--navy);
   }
+  /* A placeholder value is long text, not a short figure: smaller, and it
+     wraps inside its cell instead of running into the next one. */
+  .hstats__value[data-placeholder] { font-size: 11.5px; letter-spacing: 0; overflow-wrap: anywhere; }
   .hstats__label {
     margin-top: 2px;
     font-size: 11.5px;
@@ -350,15 +357,6 @@
     line-height: 1.2;
     color: var(--navy);
   }
-  .hsec__link {
-    display: inline-flex;
-    align-items: center;
-    gap: 2px;
-    color: inherit;
-    transition: opacity 100ms var(--ease-out);
-  }
-  .hsec__link svg { color: var(--muted); }
-  .hsec__link:active { opacity: 0.55; }
 
   /* ---------- Home: explore row, shelf cards ----------
      The media is the card; the words sit on the page under it. The whole
@@ -404,14 +402,14 @@
     box-shadow: inset 0 0 0 1px var(--line);
     pointer-events: none;
   }
-  .htile__img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top; }
+
   .htile__glyph {
     display: grid;
     place-items: center;
     color: var(--coral);
     background: linear-gradient(160deg, color-mix(in srgb, var(--coral) 13%, transparent), var(--white) 62%);
   }
-  /* Showcase: the cool blue of the Home glass plate instead of orange. */
+  /* The accent tile (How I think): a navy wash instead of coral. */
   .htile--accent .htile__glyph { background: linear-gradient(160deg, rgba(35, 62, 112, 0.13), var(--white) 62%); }
   .htile__body { display: flex; flex-direction: column; gap: 3px; padding: 10px 2px 0; }
   .htile__n {
@@ -424,93 +422,6 @@
   .htile__title { font-size: 15px; font-weight: 600; line-height: 1.2; letter-spacing: -0.014em; }
   .htile__desc { font-size: 12.5px; line-height: 1.45; letter-spacing: 0.004em; color: var(--muted); }
 
-  /* ---------- Home: client proof, a video stage ---------- */
-  .hproof {
-    display: block;
-    color: var(--navy);
-    transition: transform var(--dur-med) var(--ease-out);
-  }
-  .hproof:active { transform: scale(0.98); transition-duration: 100ms; }
-  .hproof__stage {
-    position: relative;
-    display: block;
-    aspect-ratio: 16 / 10;
-    border-radius: 20px;
-    overflow: hidden;
-    background: var(--navy-ink);
-    box-shadow: 0 1px 1.5px rgba(6, 12, 26, 0.06), 0 18px 40px -24px rgba(6, 12, 26, 0.55);
-  }
-  .hproof__stage img { display: block; width: 100%; height: 100%; object-fit: cover; }
-  /* Light glass over a photograph in both themes, so its colours are pinned
-     rather than themed. */
-  .hproof__play {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    display: grid;
-    place-items: center;
-    width: 56px;
-    height: 56px;
-    margin: -28px 0 0 -28px;
-    border-radius: 50%;
-    background: rgba(251, 251, 247, 0.92);
-    color: #0B1E3F;
-    box-shadow: 0 8px 20px -8px rgba(6, 12, 26, 0.5);
-  }
-  .hproof__play svg { margin-left: 3px; } /* a play triangle's optical centre */
-  .hproof__dur {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    padding: 3px 8px;
-    border-radius: var(--radius-pill);
-    background: rgba(6, 12, 26, 0.7);
-    color: #fff;
-    font-size: 11.5px;
-    font-weight: 600;
-    font-variant-numeric: tabular-nums;
-  }
-  .hproof__copy { display: flex; flex-direction: column; gap: 3px; padding: 12px 2px 0; }
-  .hproof__title { font-size: 16px; font-weight: 700; line-height: 1.3; letter-spacing: -0.012em; }
-  .hproof__meta { font-size: 12px; letter-spacing: 0.004em; color: var(--muted); }
-
-  /* ---------- Projects: filter + two-column grid ---------- */
-  .pfilter {
-    display: flex;
-    gap: 4px;
-    padding: 4px;
-    margin: 4px 0 0;
-    border-radius: var(--radius-pill);
-    background: var(--tint);
-  }
-  .pfilter__btn {
-    flex: 1;
-    min-height: 36px;
-    border: 0;
-    border-radius: var(--radius-pill);
-    background: transparent;
-    color: var(--muted);
-    font: inherit;
-    font-size: 12.5px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out);
-  }
-  .pfilter__btn[aria-pressed='true'] {
-    background: var(--white);
-    color: var(--navy);
-    box-shadow: 0 2px 8px -2px rgba(11, 30, 63, 0.25);
-  }
-  [data-theme='dark'] .pfilter__btn[aria-pressed='true'] { background: var(--paper); }
-  .pgrid__hint { display: none; }
-  .bento--projects { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
-  .bento--projects .bento__card--wide,
-  .bento--projects .bento__card[data-id='plan'] { grid-column: span 2; }
-  .bento--projects .bento__stack { grid-column: span 2; }
-  .bento--projects .bento__card { padding: 12px; }
-  .bento--projects .bento__card--wide .bento__media { height: 150px; }
-  .bento--projects .bento__card:not(.bento__card--wide) .bento__media { max-height: 118px; }
-
   /* ---------- Contact: the form first, submit within reach ---------- */
   .cgrid__glass { flex-direction: column; }
   .cgrid__panel { order: -1; }
@@ -520,11 +431,9 @@
     .tabbar__tab:active,
     .tabbar__tab--primary:active .tabbar__fab,
     .qmenu__button:active,
-    .htile:active,
-    .hproof:active { transform: none; }
+    .htile:active { transform: none; }
     .tabbar__tab:active { background: var(--tint); }
-    .htile:active .htile__media,
-    .hproof:active .hproof__stage { opacity: 0.85; }
+    .htile:active .htile__media { opacity: 0.85; }
     .qmenu__panel,
     .qmenu__panel.is-open { transform: none; }
   }
@@ -540,11 +449,6 @@
 /* Tablets: the shelf grows with the screen. */
 @media (min-width: 640px) and (max-width: 1099px) {
   .htile { width: min(260px, 40vw); }
-}
-
-@media (max-width: 639px) {
-  .bento--projects .bento__title { font-size: 14px; }
-  .bento--projects .bento__desc { font-size: 12px; }
 }
 
 /* Small phones: keep the bar's labels legible. */

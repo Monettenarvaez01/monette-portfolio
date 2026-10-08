@@ -1,24 +1,27 @@
-# Portfolio Template
+# Monette Oledan - Portfolio
 
-A personal portfolio with a fixed profile rail, an animated contour background, a bento home screen, a 3D page carousel, and a separate app-style layout for phones. Every piece of content is a placeholder. You swap in your own.
+The portfolio site of Monette Oledan, Brand & Media Strategist, with hands-on experience in executive and creative support, social media and LinkedIn writing. It is built for international founders: who Monette is, how she thinks, what she does, and real examples of her work.
 
-Stack: Vite 6, React 19, TypeScript, plain CSS custom properties, Three.js, GSAP, Lenis, React Router 7, Phosphor icons, Poppins.
+Adapted from the [BrewedOps portfolio template](https://github.com/brewed-ops/portfolio-template) under its own-portfolio permission (see [License](#license)).
 
-## What it looks like
+Stack: Vite 6, React 19, TypeScript, plain CSS custom properties, React Router 7, Phosphor icons, Fraunces + Poppins (self-hosted). Three.js loads only for the optional 3D gallery view.
 
-Straight from this repo, placeholders and all.
+## Pages
 
-**Desktop** - the profile rail, the contour background and the bento home.
+| Route | Page |
+|---|---|
+| `/` | Home - the value headline and a bento of Selected work, Who I am, How I think, What I do, Strategy & Writing, Let's talk |
+| `/work` | Work - Client Work, Independent Projects, Strategy & Writing; every piece carries a provenance label |
+| `/services` | Services - Brand & Media Strategy first, then the hands-on services and how an engagement runs |
+| `/about` | About - story, how I think, what I do, what I'm developing, practical details |
+| `/contact` | Contact - FAQs and an email form (opens the visitor's email app) |
+| `/projects` | Redirects to `/work` |
 
-![Desktop: profile rail on the left, headline, tools marquee and a bento grid of project, about, credential, services and testimonial cards](docs/screenshots/desktop.png)
+## Content rules
 
-**Phone** - an app-style layout: a floating tab bar, a glance widget for your stats, app-icon tools and swipeable shelf cards. Light and dark.
-
-<p>
-  <img src="docs/screenshots/mobile-light.png" alt="Phone, light theme: profile header, one-line headline, stats widget, tools row and explore cards above a floating tab bar" width="300">
-  &nbsp;&nbsp;
-  <img src="docs/screenshots/mobile-dark.png" alt="Phone, dark theme: the same Home screen on a navy background" width="300">
-</p>
+- Every unconfirmed line starts with **PLACEHOLDER** and shows a dashed coral outline on the page (`src/components/Copy.tsx`). Replace the text and the marker disappears on its own.
+- No invented biography, clients, results, testimonials, tools, metrics or samples. Work is added only from real pieces Monette supplies, with permission to share.
+- Work labels: Client (commissioned), Independent (self-initiated), Concept (not commissioned), Essay. Capabilities still being built are tagged Developing.
 
 ## Run it
 
@@ -29,45 +32,31 @@ npm run build      # typecheck + production build to dist/
 npm run lint       # ESLint with the TypeScript parser and the React hooks rules
 ```
 
-## Make it yours
-
-Every spot that needs your content says **PLACEHOLDER** and describes what goes there. You can edit the files yourself, or open the repo in an AI coding tool and tell it what to put in each spot.
+## Where things live
 
 | What | Where |
 |---|---|
-| Name, handle, photo, email, socials, Home headline, phone stats and their icons | `src/data/profile.ts` (start here) |
-| Phone headline size (holds your headline on one line) | `--headline-em` in `src/styles/mobile-pass.css` - the comment there shows how to measure it |
-| Your photo | `public/avatar.svg` (or point `avatarSrc` at a `.webp`/`.png`) |
-| Page headlines and copy | the top of each page component: `ProjectsGrid`, `ServicesGrid`, `ShowcaseGrid`, `TestimonialsGrid`, `AboutGrid`, `ContactGrid` in `src/components/` |
-| Funnel pages and websites (the 3D carousel) | `src/data/funnels.ts` + HTML files in `public/funnels/` and `public/samples/` |
-| Projects, apps, side builds | `src/data/projects.ts`, `src/data/ai-stack.ts` |
+| Name, role, photo, email, socials, Home headline, practical facts | `src/data/profile.ts` |
+| Services and the engagement steps | `src/data/services.ts` |
+| Work collections, projects and the creative gallery | `src/data/work.ts` |
+| Tools (the Home band shows once the list is not empty) | `src/data/tools.ts` |
 | FAQs | `src/data/faqs.ts` |
-| Tools marquee | `src/components/ToolsMarquee.tsx` (logos in `public/icons/`) |
-| Testimonial videos | `public/testimonials/`, then set `src` in `TestimonialsGrid.tsx` |
-| Contact form | `src/lib/contact.ts` (opens the visitor's email app by default; set `VITE_CONTACT_ENDPOINT` to post to your own backend) |
+| Page copy | the top of `HomeBento`, `HomeMobile`, `WorkPage`, `ServicesPage`, `AboutPage`, `ContactGrid` in `src/components/` |
+| Contact | `src/lib/contact.ts` (email app by default; no third-party form service is connected) |
+| Colors and type | `src/styles/tokens.css`, `src/styles/brand.css` |
 | SEO, share image, favicon | `index.html`, `public/favicon.svg` |
-| Colors | `src/styles/tokens.css` |
-| Privacy / Terms | `src/components/Privacy.tsx`, `src/components/ToS.tsx` |
-
-### Adding your own funnels and websites
-
-1. Put the page's HTML in `public/funnels/` (single pages, shown 16:9) or `public/samples/` (full websites, shown 3:4).
-2. Add an entry to `src/data/funnels.ts`.
-3. Run `node scripts/make-thumbs.mjs` to render the thumbnails. It uses the Playwright install that comes with the dev dependencies (run `npx playwright install chromium` once if needed).
-
-To regenerate the placeholder pages: `node scripts/make-placeholder-sites.mjs`.
 
 ## Notes
 
-- The background shader measures the visitor's frame rate and steps down on slow machines (`src/lib/perf.ts`). Keep any large `backdrop-filter` blur off the layers above it, because blur over an animated canvas is the most expensive thing on the page.
-- From 1100px down, the site switches to the phone layout. `src/styles/mobile-app.css` owns its components (`TabBar`, `QuickMenu`, `HomeMobile`); `src/styles/mobile-pass.css` holds the motion (the tab pill, the bar hiding on scroll, page arrival, tile depth) and the native-feel fixes. Everything respects `prefers-reduced-motion` and the site's own Reduce motion switch.
-- Anything new you add above the fold on Home must join the intro hold-back list in `src/styles/boot.css`. Otherwise it shows through the intro animation.
+- Every page scrolls. On desktop the panel beside the profile rail is the scroller; below 1100px the document scrolls and a bottom tab bar navigates (`src/styles/mobile-app.css`, `src/styles/mobile-pass.css`).
+- Motion is deliberately small: a short fade-in, small scroll reveals, hover lifts, a brief theme switch. All of it respects `prefers-reduced-motion` and the site's own Reduce motion switch.
+- The 3D gallery (`Carousel3D`) is optional. It is offered only on a desktop with a mouse or trackpad, with motion allowed, WebGL available and at least six gallery images, and it loads only when the visitor asks for it. The accessible grid is always there.
 
 ## Credits
 
-- Contour background technique inspired by the landonorris.com site by OFF+BRAND. The simplex noise is Ashima Arts / Ian McEwan (MIT).
-- Icons: [Phosphor](https://phosphoricons.com) (MIT). Tool logos in `public/icons/` are trademarks of their owners and are included as examples only.
-- Font: Poppins (SIL Open Font License).
+- Template: [BrewedOps portfolio template](https://github.com/brewed-ops/portfolio-template). Its contour background (inspired by the landonorris.com site by OFF+BRAND, simplex noise by Ashima Arts / Ian McEwan, MIT) has been removed from this adaptation.
+- Icons: [Phosphor](https://phosphoricons.com) (MIT). Any tool or platform logos in `public/icons/` are trademarks of their owners.
+- Fonts: Fraunces and Poppins (SIL Open Font License), self-hosted via Fontsource.
 
 ## License
 
