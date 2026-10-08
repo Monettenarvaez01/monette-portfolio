@@ -19,7 +19,7 @@
   font-weight: 600;
   letter-spacing: var(--ls-eyebrow);
   text-transform: uppercase;
-  color: var(--orange-ink);
+  color: var(--coral-ink);
 }
 .reviews__headline {
   font-size: var(--fs-h3);
@@ -51,7 +51,7 @@
 .review-card__stars {
   display: inline-flex;
   gap: 3px;
-  color: var(--orange);
+  color: var(--coral);
 }
 .review-card__body {
   font-size: 14.5px;

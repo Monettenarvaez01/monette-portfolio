@@ -1,0 +1,197 @@
+/* ============================================
+   BRAND - Monette Oledan's editorial layer
+   Loads after apple.css and mobile-pass.css and before perf.css, so it wins
+   on type and colour and the perf tiers still switch things off last.
+
+   Sections:
+     1  Headline serif   which titles take Fraunces, and how it is set
+     2  Editorial bits   section index, hairline rule, pull quote
+     3  Work labels      the provenance tag every project card carries
+     4  Placeholders     how unfilled content is marked while we build
+
+   Every colour here is a token from tokens.css, so the dark theme and the
+   high-contrast switch (a11y.css) follow without extra rules.
+   ============================================ */
+
+/* ---------- 1. Headline serif ----------
+   Display and page titles only. Small UI labels, card meta and the nav stay
+   in the sans so the interface still reads as an interface.
+   .boot__title is the intro's copy of .home__title (boot.css: "change one,
+   change both"), so the two always share a selector here. */
+.home__title,
+.boot__title,
+.pgrid__title,
+.view__title,
+.rail__name,
+.hprofile__name,
+.hsec__title,
+.bento__title,
+.sgrid__method-title,
+.sgrid__offers-title,
+.cgrid__aside-title,
+.cgrid__done-title,
+.legal-page__title,
+.thankyou__heading,
+.ed-serif {
+  font-family: var(--font-serif);
+  font-optical-sizing: auto;
+  font-weight: 560;
+  letter-spacing: -0.015em;
+}
+.home__title,
+.boot__title {
+  font-weight: 540;
+  letter-spacing: -0.022em;
+  line-height: 1.06;
+}
+.pgrid__title,
+.view__title { line-height: 1.1; }
+/* The rail name and card titles are small; a touch more weight keeps the
+   serif's thin strokes from going grey at that size. */
+.rail__name,
+.hprofile__name,
+.bento__title { font-weight: 600; letter-spacing: -0.01em; }
+
+/* ---------- 2. Editorial bits ---------- */
+
+/* Section index: "01", "02"... in coral ink, tabular so a column aligns. */
+.ed-index {
+  font-family: var(--font-sans);
+  font-size: var(--fs-eyebrow);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.08em;
+  color: var(--coral-ink);
+}
+
+/* Eyebrow: the small uppercase kicker over a section title. */
+.ed-eyebrow {
+  font-family: var(--font-sans);
+  font-size: var(--fs-eyebrow);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--stone);
+}
+
+/* Hairline rule with a short coral lead - the magazine section break. */
+.ed-rule {
+  position: relative;
+  height: 1px;
+  border: 0;
+  background: var(--line);
+}
+.ed-rule::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: -1px;
+  width: 40px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--coral);
+}
+
+/* Pull quote: serif, coral lead bar. For the visitor's own words only -
+   never a testimonial unless a real client wrote it and agreed to it. */
+.ed-quote {
+  padding-left: 20px;
+  border-left: 3px solid var(--coral);
+  font-family: var(--font-serif);
+  font-size: clamp(20px, 2vw, 26px);
+  font-weight: 450;
+  line-height: 1.35;
+  color: var(--navy);
+}
+
+/* Warm neutral panel: navy text on sand in light, light text on warm
+   charcoal in dark. Coral TEXT on it uses --coral-ink (4.78:1+). */
+.ed-panel {
+  background: var(--sand);
+  color: var(--navy);
+  border-radius: var(--radius-card);
+}
+
+/* ---------- 3. Work labels ----------
+   Every project says where it came from. The tag is a quiet metadata
+   chip, the way a magazine labels a section - not a warning badge.
+
+     .ed-label--client       commissioned work, shared with permission
+     .ed-label--independent  self-initiated real work
+     .ed-label--concept      a strategy exercise or spec piece, not commissioned
+     .ed-label--essay        writing and thinking
+     .ed-label--developing   a capability being built, not yet client-proven
+     .ed-label--verified     a result the owner of the work can verify
+
+   All text/background pairs clear WCAG AA in both themes (tokens.css). */
+.ed-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 24px;
+  padding: 0 10px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--navy);
+  font-family: var(--font-sans);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  white-space: nowrap;
+}
+.ed-label::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  flex: none;
+}
+.ed-label--client {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: var(--cream);
+}
+.ed-label--client::before { background: var(--coral); }
+.ed-label--independent {
+  background: var(--sand);
+  border-color: transparent;
+  color: var(--navy);
+}
+.ed-label--independent::before { background: var(--coral-ink); }
+.ed-label--concept {
+  border-color: var(--coral-ink);
+  color: var(--coral-ink);
+}
+.ed-label--essay { color: var(--navy); }
+.ed-label--developing {
+  border-style: dashed;
+  color: var(--stone);
+}
+.ed-label--developing::before { background: transparent; box-shadow: inset 0 0 0 1.5px currentColor; }
+.ed-label--verified {
+  background: var(--coral);
+  border-color: var(--coral);
+  color: var(--on-coral);
+}
+.ed-label--verified::before { background: var(--on-coral); }
+
+/* ---------- 4. Placeholders ----------
+   Content Monette has not supplied yet. Visibly unfinished on purpose, so a
+   placeholder can never be mistaken for a real claim. Remove the class when
+   real content replaces the text. */
+.ed-placeholder {
+  outline: 1.5px dashed color-mix(in srgb, var(--coral-ink) 70%, transparent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+.ed-placeholder-note {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--coral-ink);
+}

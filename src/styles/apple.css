@@ -35,13 +35,11 @@
 }
 
 /* ---------- 2. Type ----------
-   "Default to the platform's system font before a custom face; it already
-   ships optical sizing, tracking tables, and legibility tuning." SF Pro on
-   Apple hardware, Segoe UI Variable on Windows, Poppins stays as the
-   fallback so the brand face is never more than one step away. */
+   The body face is the brand sans (--font-sans, Poppins) on every platform,
+   so the site reads the same everywhere; headlines take the editorial serif
+   in brand.css. Size-specific tracking and leading below still apply. */
 :root {
-  --font-display: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text',
-    system-ui, 'Segoe UI Variable Display', 'Segoe UI', 'Poppins', sans-serif;
+  --font-display: var(--font-sans);
   --ls-display: -0.028em;
   --ls-eyebrow: 0.08em;
   --lh-tight: 1.02;
@@ -200,7 +198,7 @@ body {
     background: var(--tint-strong);
     box-shadow: none;
   }
-  .rail__link.active svg { color: var(--orange); }
+  .rail__link.active svg { color: var(--coral); }
 
   /* Round plates on the material lose their drop shadow: two stacked light
      surfaces collapse legibility, so the plates sit flush with a hairline. */
@@ -346,8 +344,8 @@ body {
       linear-gradient(100deg,
         rgba(255, 255, 255, 0.97) 0%,
         rgba(255, 255, 255, 0.93) 42%,
-        rgba(219, 231, 255, 0.95) 76%,
-        rgba(186, 209, 255, 0.96) 100%);
+        rgba(239, 233, 223, 0.95) 76%,
+        rgba(240, 222, 210, 0.96) 100%);
   }
   [data-theme='dark'] .home__glass {
     background:
@@ -355,8 +353,8 @@ body {
       linear-gradient(100deg,
         rgba(16, 24, 42, 0.96) 0%,
         rgba(16, 26, 48, 0.94) 42%,
-        rgba(18, 40, 96, 0.94) 76%,
-        rgba(24, 56, 140, 0.93) 100%);
+        rgba(15, 32, 64, 0.94) 76%,
+        rgba(22, 42, 80, 0.93) 100%);
   }
 }
 @media (prefers-contrast: more) {

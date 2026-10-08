@@ -58,11 +58,11 @@
   color: var(--navy);
   font-weight: 600;
   text-decoration: none;
-  box-shadow: inset 0 -1px 0 rgba(255, 122, 26, 0.55);
+  box-shadow: inset 0 -1px 0 rgba(232, 115, 90, 0.55);
   transition: box-shadow 200ms var(--ease-out), color 200ms var(--ease-out);
 }
-.agrid__link:hover { color: var(--orange-ink); box-shadow: inset 0 -2px 0 var(--orange); }
-.agrid__link:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
+.agrid__link:hover { color: var(--coral-ink); box-shadow: inset 0 -2px 0 var(--coral); }
+.agrid__link:focus-visible { outline: 2px solid var(--coral); outline-offset: 3px; }
 
 /* ---------- The capability ladder ----------
    Four rows, each led by the real marks of what that work is built with. The
@@ -138,7 +138,7 @@
   color: var(--line-strong);
   transition: color 220ms var(--ease-out);
 }
-.agrid__cap:hover .agrid__cap-index { color: var(--orange); }
+.agrid__cap:hover .agrid__cap-index { color: var(--coral); }
 
 /* ---------- The credential bar ----------
    Loose pills read as separate components fighting for the same line. This
@@ -180,7 +180,7 @@
   color: var(--line-strong);
   transition: color 220ms var(--ease-out), transform 220ms var(--ease-out);
 }
-.agrid__cell--wide:hover .agrid__cell-go { color: var(--orange); transform: translate(2px, -2px); }
+.agrid__cell--wide:hover .agrid__cell-go { color: var(--coral); transform: translate(2px, -2px); }
 .agrid__cell-mark {
   display: grid;
   place-items: center;
@@ -188,9 +188,9 @@
   width: clamp(30px, 2.3vw, 38px);
   height: clamp(30px, 2.3vw, 38px);
   border-radius: 10px;
-  color: var(--orange);
-  background: rgba(255, 122, 26, 0.10);
-  box-shadow: inset 0 0 0 1px rgba(255, 122, 26, 0.22);
+  color: var(--coral);
+  background: rgba(232, 115, 90, 0.10);
+  box-shadow: inset 0 0 0 1px rgba(232, 115, 90, 0.22);
 }
 .agrid__cell-mark--img { background: var(--white); box-shadow: inset 0 0 0 1px var(--line-strong); }
 /* The HLA mark is a full-bleed gradient logo - an orange wash behind it reads

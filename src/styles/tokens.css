@@ -1,24 +1,37 @@
 :root {
-  /* Brand palette */
-  --navy:       #0B1E3F;   /* primary text, card surface, dark accents */
-  --navy-ink:   #060C1A;   /* matches shader dark base for .dark-section */
-  --cream:      #F4F4ED;   /* matches shader light base, page bg */
+  /* Brand palette - Monette Oledan: navy, coral, cream and warm neutrals.
+     Contrast ratios are WCAG 2.x, measured against --cream unless noted.
+     Coral is a FILL colour: it fails as text on light grounds (2.7:1), so
+     coral text always uses --coral-ink, and anything sitting on a coral fill
+     uses --on-coral (navy in both themes, 5.5:1). Never white on coral. */
+  --navy:       #0B1E3F;   /* primary text, dark surfaces - 14.95:1 */
+  --navy-ink:   #060C1A;   /* deepest navy, dark plates */
+  --cream:      #F4F4ED;   /* page ground (matches the shader's light base) */
   --white:      #FFFFFF;
-  --orange:     #FF7A1A;   /* CTA, accent bar, active dot */
-  --orange-hover: #FFA155; /* CTA hover state */
-  --orange-ink: #B4490A;   /* accessible orange TEXT on light bg - 4.88:1 on cream, 5.39:1 on white (WCAG AA) */
-  --muted:      #5A6479;
+  --coral:      #E8735A;   /* accent fill: buttons, rules, dots, highlights */
+  --coral-hover:#EE8D77;   /* coral fill hover */
+  --coral-ink:  #A3402A;   /* coral TEXT on light grounds - 5.72:1 cream, 4.78:1 sand */
+  --on-coral:   #0B1E3F;   /* text/icons on a coral fill, constant across themes */
+  --sand:       #EFE9DF;   /* warm neutral panel; navy text on it */
+  --stone:      #5E574D;   /* warm neutral text / meta lines */
+  --muted:      #5A6479;   /* secondary text - 5.38:1 */
   --divider:    rgba(11, 30, 63, 0.12);
   --success:    #2E9E6B;   /* form status ok - clears 4.5:1 on navy-ink */
   --error:      #D9544F;   /* form status error - clears 4.5:1 on navy-ink */
 
   /* Brands section - neutral logo plate so client marks read as framed logos,
-     not site UI (esp. an orange logo vs the --orange accent) */
+     not site UI (esp. a coral logo vs the --coral accent) */
   --brands-chip-bg:     #FBFBF7;                  /* cool near-white, lifts off cream */
   --brands-chip-border: rgba(11, 30, 63, 0.10);   /* hairline frame on the logo medallion */
 
-  /* Type */
-  --font-display: 'Poppins', system-ui, -apple-system, sans-serif;
+  /* Type - editorial pairing. Fraunces (variable serif, OFL) carries the
+     headlines and pull quotes; Poppins (OFL) stays the body and UI face.
+     Both are self-hosted through Fontsource: no third-party font request.
+     --font-display is the body face (body/global.css reads it) and is kept
+     as an alias so the existing sheets do not have to change. */
+  --font-serif: 'Fraunces Variable', 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-sans:  'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: var(--font-sans);
   --fs-display: clamp(64px, 9vw, 128px);
   --fs-h2: clamp(32px, 4vw, 56px);
   --fs-h3: clamp(22px, 2vw, 28px);
@@ -86,7 +99,7 @@
   --panel-dark: #060C1A;
 
   /* Verified badge - Facebook blue, not the site accent. It is a platform
-     signal, not brand furniture, so it does not follow --orange. */
+     signal, not brand furniture, so it does not follow --coral. */
   --verified:   #0866FF;
 
   /* Ink for anything sitting on --plate. Both are constant across themes:
@@ -101,7 +114,7 @@
 /* ---------- Dark theme ----------
    Redefined at the root, not per component: every existing rule keeps reading
    --cream (page), --navy (ink), --white (card surface) and flips with it.
-   Orange stays the single accent in both modes. */
+   Coral stays the single accent in both modes. */
 [data-theme='dark'] {
   --cream:        #070B14;
   --paper:        #0B1120;
@@ -115,7 +128,9 @@
   --tint:         rgba(255, 255, 255, 0.05);
   --tint-strong:  rgba(255, 255, 255, 0.09);
   --glass:        rgba(14, 22, 38, 0.72);
-  --orange-ink:   #FF9A4D;
+  --coral-ink:    #F08A72;   /* 7.7:1 on --paper */
+  --sand:         #221E1A;   /* warm dark panel - light text on it 14.5:1 */
+  --stone:        #B8AE9F;   /* 8.99:1 on --cream */
   --panel-dark:   #0B1120;
   --brands-chip-bg:     #F4F4ED;
   --brands-chip-border: rgba(255, 255, 255, 0.14);

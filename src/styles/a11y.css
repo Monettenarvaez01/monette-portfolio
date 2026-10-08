@@ -44,7 +44,7 @@
 .a11y__size:focus-visible,
 .a11y__switch:focus-visible,
 .a11y__reset:focus-visible {
-  outline: 2px solid var(--orange);
+  outline: 2px solid var(--coral);
   outline-offset: 2px;
 }
 
@@ -131,9 +131,9 @@
 .a11y__size:nth-child(3) { font-size: 18px; }
 .a11y__size:hover { background: color-mix(in srgb, var(--cream) 14%, transparent); }
 .a11y__size.is-on {
-  background: var(--orange);
-  border-color: var(--orange);
-  color: var(--white);
+  background: var(--coral);
+  border-color: var(--coral);
+  color: var(--on-coral);
 }
 
 .a11y__list {
@@ -184,7 +184,7 @@
   background: var(--cream);
   transition: transform var(--dur-med) var(--ease-spring);
 }
-.a11y__switch.is-on .a11y__toggle { background: var(--orange); }
+.a11y__switch.is-on .a11y__toggle { background: var(--coral); }
 .a11y__switch.is-on .a11y__toggle::after { transform: translateX(16px); background: var(--white); }
 
 .a11y__reset {
@@ -224,13 +224,14 @@
 /* High contrast: the muted grey climbs to near-ink and hairlines darken. */
 :root[data-a11y-contrast='true'] {
   --muted: #2A3550;
+  --stone: #3D3831;
   --line: rgba(11, 30, 63, 0.4);
-  --orange-ink: #9A3D06;
+  --coral-ink: #8A3523;   /* 7.3:1 on cream */
 }
 :root[data-a11y-contrast='true'][data-theme='dark'] {
   --muted: rgba(237, 240, 246, 0.88);
   --line: rgba(255, 255, 255, 0.3);
-  --orange-ink: #FFB070;
+  --coral-ink: #F7AE9C;   /* 10.8:1 on the dark ground */
 }
 
 /* Reduce motion: every animation and transition stops; drifting tracks hold. */

@@ -5,6 +5,10 @@
 @import '@fontsource/poppins/latin-500.css';
 @import '@fontsource/poppins/latin-600.css';
 @import '@fontsource/poppins/latin-700.css';
+/* Fraunces Variable - the editorial headline serif (OFL). One variable file
+   per subset covers every weight; unicode-range means a visitor downloads
+   only the subsets their text uses (latin for this site). */
+@import '@fontsource-variable/fraunces/wght.css';
 
 /* Reset */
 *, *::before, *::after {
@@ -71,7 +75,7 @@ button {
 }
 
 :focus-visible {
-  outline: 2px solid var(--orange);
+  outline: 2px solid var(--coral);
   outline-offset: 3px;
   border-radius: 4px;
 }
@@ -183,7 +187,7 @@ main > * {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 50% 55%, rgba(255, 122, 26, 0.08), transparent 55%),
+    radial-gradient(circle at 50% 55%, rgba(232, 115, 90, 0.08), transparent 55%),
     var(--navy-ink);
 }
 
@@ -210,7 +214,7 @@ main > * {
    around the impact point (transform-origin in viewBox units) so the bulb
    stays planted on the surface as it flattens. */
 .intro__drop {
-  fill: var(--orange);
+  fill: var(--coral);
   transform-box: view-box;
   transform-origin: 300px 330px;
   opacity: 0;
@@ -279,7 +283,7 @@ main > * {
    sibling, then dims to a persistent glow that is still on screen when the
    orange flood arrives, so the flood color already lives in the topography. */
 .intro__ring-accent {
-  stroke: var(--orange);
+  stroke: var(--coral);
   stroke-width: 2;
   fill: none;
   opacity: 0;
@@ -368,10 +372,10 @@ main > * {
   height: 220vmax;
   margin: -110vmax 0 0 -110vmax;
   border-radius: 50%;
-  /* Burnt orange, not the bright accent: a full-viewport flash of #FF7A1A is
+  /* Burnt orange, not the bright accent: a full-viewport flash of #E8735A is
      an eye-strain / photosensitivity risk, so the flood uses the darker ink
      tone and lets the accents stay bright at small sizes only. */
-  background: var(--orange-ink);
+  background: var(--coral-ink);
   transform: scale(0);
   z-index: 3;
   will-change: transform;

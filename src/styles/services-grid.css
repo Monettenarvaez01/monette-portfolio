@@ -31,7 +31,7 @@
   --ink-plate: rgba(11, 30, 63, 0.035);
   --ink-chip: rgba(11, 30, 63, 0.05);
   --ink-ghost: rgba(11, 30, 63, 0.06);
-  --ink-eyebrow: var(--orange-ink);
+  --ink-eyebrow: var(--coral-ink);
   position: relative;
   display: grid;
   grid-template-columns: minmax(200px, 0.7fr) minmax(0, 2.6fr);
@@ -39,8 +39,8 @@
   padding: clamp(14px, 1.8vh, 20px) clamp(16px, 1.6vw, 24px);
   border-radius: 20px;
   background:
-    radial-gradient(600px 220px at 0% 0%, rgba(255, 122, 26, 0.12), transparent 70%),
-    radial-gradient(500px 260px at 100% 100%, rgba(24, 56, 140, 0.10), transparent 70%),
+    radial-gradient(600px 220px at 0% 0%, rgba(232, 115, 90, 0.12), transparent 70%),
+    radial-gradient(500px 260px at 100% 100%, rgba(35, 62, 112, 0.10), transparent 70%),
     var(--white);
   color: var(--ink);
   box-shadow:
@@ -56,10 +56,10 @@
   --ink-plate: rgba(255, 255, 255, 0.045);
   --ink-chip: rgba(255, 255, 255, 0.07);
   --ink-ghost: rgba(255, 255, 255, 0.05);
-  --ink-eyebrow: var(--orange);
+  --ink-eyebrow: var(--coral);
   background:
-    radial-gradient(600px 220px at 0% 0%, rgba(255, 122, 26, 0.22), transparent 70%),
-    radial-gradient(500px 260px at 100% 100%, rgba(24, 56, 140, 0.45), transparent 70%),
+    radial-gradient(600px 220px at 0% 0%, rgba(232, 115, 90, 0.22), transparent 70%),
+    radial-gradient(500px 260px at 100% 100%, rgba(35, 62, 112, 0.45), transparent 70%),
     var(--panel-dark);
   box-shadow:
     inset 0 0 0 1px rgba(255, 255, 255, 0.08),
@@ -122,7 +122,7 @@
   left: -32px;
   width: 32px;
   height: 0;
-  border-top: 2px dashed rgba(255, 122, 26, 0.45);
+  border-top: 2px dashed rgba(232, 115, 90, 0.45);
 }
 .sgrid__stage + .sgrid__stage::after {
   content: '';
@@ -132,8 +132,8 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--orange);
-  box-shadow: 0 0 10px rgba(255, 122, 26, 0.9);
+  background: var(--coral);
+  box-shadow: 0 0 10px rgba(232, 115, 90, 0.9);
   animation: sgrid-hop 2.4s var(--ease-out) infinite;
   animation-delay: calc(var(--i, 1) * 0.8s);
 }
@@ -162,9 +162,9 @@
   width: 38px;
   height: 38px;
   border-radius: 12px;
-  background: rgba(255, 122, 26, 0.14);
-  color: var(--orange);
-  box-shadow: inset 0 0 0 1px rgba(255, 122, 26, 0.28);
+  background: rgba(232, 115, 90, 0.14);
+  color: var(--coral);
+  box-shadow: inset 0 0 0 1px rgba(232, 115, 90, 0.28);
   animation: sgrid-lit 2.4s var(--ease-out) infinite;
   animation-delay: calc(var(--i, 0) * 0.8s);
 }
@@ -249,7 +249,7 @@
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.12em;
-  color: var(--orange-ink);
+  color: var(--coral-ink);
 }
 .sgrid__chip {
   align-self: flex-start;
@@ -260,9 +260,9 @@
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--orange-ink);
-  background: rgba(255, 122, 26, 0.12);
-  box-shadow: inset 0 0 0 1px rgba(255, 122, 26, 0.22);
+  color: var(--coral-ink);
+  background: rgba(232, 115, 90, 0.12);
+  box-shadow: inset 0 0 0 1px rgba(232, 115, 90, 0.22);
 }
 .sgrid__bullets {
   display: flex;
@@ -278,7 +278,7 @@
   line-height: 1.35;
   color: var(--navy);
 }
-.sgrid__bullet svg { flex: none; margin-top: 2px; color: var(--orange); }
+.sgrid__bullet svg { flex: none; margin-top: 2px; color: var(--coral); }
 
 /* ---------- The workflow ---------- */
 .sgrid__flow {
@@ -308,7 +308,7 @@
   font-weight: 600;
   letter-spacing: var(--ls-eyebrow);
   text-transform: uppercase;
-  color: var(--orange-ink);
+  color: var(--coral-ink);
 }
 .sgrid__flow-title {
   font-size: clamp(20px, 1.5vw, 28px);
@@ -343,7 +343,7 @@
   background: var(--paper);
   box-shadow: inset 0 0 0 1px var(--line);
 }
-.sgrid__flow-tool svg { color: var(--orange); }
+.sgrid__flow-tool svg { color: var(--coral); }
 
 /* ---------- Below the shell ---------- */
 @media (max-width: 1099px) {

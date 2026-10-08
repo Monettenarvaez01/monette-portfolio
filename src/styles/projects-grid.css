@@ -26,7 +26,7 @@
   font-weight: 600;
   letter-spacing: var(--ls-eyebrow);
   text-transform: uppercase;
-  color: var(--orange-ink);
+  color: var(--coral-ink);
 }
 .pgrid__title {
   font-size: clamp(30px, 3.1vw, 60px);
@@ -72,7 +72,7 @@
   white-space: nowrap;
   pointer-events: none;
 }
-.pgrid__hint svg { color: var(--orange); }
+.pgrid__hint svg { color: var(--coral); }
 @media (min-width: 1100px) {
   .pgrid__glass { height: 100%; display: flex; }
   .bento--projects { flex: 1 1 auto; height: 100%; }
@@ -130,7 +130,7 @@
   box-shadow: inset 0 0 0 1px var(--line);
   overflow: hidden;
 }
-.bento__doc-eyebrow { font-size: 9px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange-ink); }
+.bento__doc-eyebrow { font-size: 9px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--coral-ink); }
 .bento__doc-title { font-size: clamp(13px, 0.9vw, 15px); font-weight: 700; letter-spacing: -0.01em; line-height: 1.2; color: var(--navy); }
 .bento__doc-flow { display: flex; align-items: center; gap: 6px; margin-top: 2px; }
 .bento__doc-flow i {
@@ -142,7 +142,7 @@
   border: 1px solid var(--line-strong);
   color: var(--navy);
 }
-.bento__doc-flow i.is-on { background: var(--orange); border-color: var(--orange); color: #fff; }
+.bento__doc-flow i.is-on { background: var(--coral); border-color: var(--coral); color: var(--on-coral); }
 .bento__doc-line { height: 6px; border-radius: 3px; background: var(--tint-strong); }
 .bento__doc-line--short { width: 60%; }
 
@@ -170,11 +170,11 @@
   width: 38px;
   height: 38px;
   border-radius: 11px;
-  background: rgba(255, 122, 26, 0.12);
-  color: var(--orange);
+  background: rgba(232, 115, 90, 0.12);
+  color: var(--coral);
 }
 .bento__build-text { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
-.bento__kicker { font-size: 8.5px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange-ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.bento__kicker { font-size: 8.5px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--coral-ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .bento__build-title { font-size: clamp(12px, 0.85vw, 14px); font-weight: 700; letter-spacing: -0.01em; line-height: 1.2; color: var(--navy); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .bento__build-desc {
   font-size: clamp(9.5px, 0.62vw, 11px);
@@ -195,7 +195,7 @@
   color: var(--navy);
   transition: transform var(--dur-med) var(--ease-spring), border-color var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out);
 }
-.bento__card--build:hover .bento__build-arrow { transform: translate(2px, -2px); border-color: var(--orange); color: var(--orange); }
+.bento__card--build:hover .bento__build-arrow { transform: translate(2px, -2px); border-color: var(--coral); color: var(--coral); }
 @media (max-width: 1099px) {
   .bento__stack { grid-template-rows: none; }
   .bento__card--build { min-height: 84px; }
@@ -280,7 +280,7 @@
   transition: transform var(--dur-med) var(--ease-spring), background var(--dur-fast) var(--ease-out);
 }
 .pmodal__close:hover { transform: rotate(90deg); background: rgba(255, 255, 255, 0.22); }
-.pmodal__close:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
+.pmodal__close:focus-visible { outline: 2px solid var(--coral); outline-offset: 3px; }
 
 .pmodal__stage {
   width: min(1560px, 100%);
@@ -359,7 +359,7 @@
   cursor: pointer;
   transition: background var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
 }
-.ppanel__tab svg { color: var(--orange); }
+.ppanel__tab svg { color: var(--coral); }
 .ppanel__tab[aria-selected='true'] { background: var(--navy); color: var(--cream); border-color: var(--navy); }
 
 .ppanel__bar {
@@ -404,7 +404,7 @@
   font-size: 12px;
   font-weight: 600;
 }
-.ppanel__ext svg { color: var(--orange); }
+.ppanel__ext svg { color: var(--coral); }
 
 .ppanel__stage {
   position: relative;
@@ -454,7 +454,7 @@
   color: #EDF0F6;
 }
 .aig__head-text { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
-.aig__eyebrow { font-size: var(--fs-eyebrow); font-weight: 600; letter-spacing: var(--ls-eyebrow); text-transform: uppercase; color: #FF9A4D; }
+.aig__eyebrow { font-size: var(--fs-eyebrow); font-weight: 600; letter-spacing: var(--ls-eyebrow); text-transform: uppercase; color: #F08A72; }
 .aig__title { font-size: clamp(18px, 1.5vw, 26px); font-weight: 700; letter-spacing: -0.015em; line-height: 1.2; max-width: 34ch; }
 .aig__harness { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
 .aig__harness-label { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(237, 240, 246, 0.6); margin-right: 4px; }
@@ -493,7 +493,7 @@
   background: var(--paper);
   transition: transform var(--dur-med) var(--ease-spring), border-color var(--dur-fast) var(--ease-out);
 }
-.aig__card:hover { transform: translateY(-2px); border-color: var(--orange); }
+.aig__card:hover { transform: translateY(-2px); border-color: var(--coral); }
 
 .aig__marks { display: flex; align-items: center; gap: 8px; }
 .aig__mark {
@@ -526,7 +526,7 @@
 [data-theme='dark'] .aig__status[data-status='Live'] { color: #3DBA74; }
 
 .aig__name { display: flex; align-items: center; gap: 7px; margin-top: 4px; font-size: 15px; font-weight: 700; letter-spacing: -0.01em; color: var(--navy); }
-.aig__name svg { color: var(--orange); flex: none; }
+.aig__name svg { color: var(--coral); flex: none; }
 .aig__what { font-size: 13px; line-height: 1.5; color: var(--navy); }
 .aig__stack { font-size: 11.5px; line-height: 1.45; color: var(--muted); }
 .aig__tools { display: flex; flex-wrap: wrap; gap: 5px; list-style: none; margin-top: auto; padding-top: 6px; }
