@@ -17,3 +17,12 @@ pnpm-debug.log*
 # needs it - so it is the one env file that is tracked.
 !.env.production
 !.env.example
+
+# Client media never enters the repository. Keep client files (videos,
+# graphics, screenshots, documents, prospect data) in private/ on your own
+# machine; everything under it is ignored. Only self-created or properly
+# licensed media goes in public/.
+private/
+client-media/
+# Private, unpublished project data (client details stay out of the repo).
+src/data/private/

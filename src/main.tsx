@@ -8,6 +8,7 @@ import { restorePrefs } from '@/lib/a11y'
 
 // Every route but Home is its own chunk: the first visit only pays for Home.
 const WorkPage = lazy(() => import('@/components/WorkPage'))
+const ProjectPage = lazy(() => import('@/components/ProjectPage'))
 const ServicesPage = lazy(() => import('@/components/ServicesPage'))
 const AboutPage = lazy(() => import('@/components/AboutPage'))
 const ContactGrid = lazy(() => import('@/components/ContactGrid'))
@@ -47,6 +48,7 @@ createRoot(container).render(
         <Route element={<App />}>
           <Route path="/" element={<Home />} />
           <Route path="/work" element={<WorkPage />} />
+          <Route path="/work/:slug" element={<ProjectPage />} />
           {/* The template's old Projects route now lives at /work. */}
           <Route path="/projects" element={<Navigate to="/work" replace />} />
           <Route path="/services" element={<ServicesPage />} />

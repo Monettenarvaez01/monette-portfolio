@@ -143,7 +143,7 @@ ol[role='list'] {
 
 /* ---------- Theme sweep ----------
    The theme switch grows out of the toggle button: the new snapshot is a
-   circle centred on the button (--sweep-x/y, set by lib/theme.ts) that
+   circle centered on the button (--sweep-x/y, set by lib/theme.ts) that
    expands until it reaches the farthest corner (--sweep-r). Default
    cross-fades are disabled so the edge stays hard. */
 ::view-transition-old(root),

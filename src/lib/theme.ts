@@ -21,7 +21,7 @@ export function getTheme(): Theme {
 function applyTheme(theme: Theme) {
   const root = document.documentElement
   root.dataset.theme = theme
-  // The browser's own bar takes the page colour. Read from the token after
+  // The browser's own bar takes the page color. Read from the token after
   // the switch, so tokens.css stays the one place the palette lives.
   const page = getComputedStyle(root).getPropertyValue('--cream').trim()
   document.querySelector('meta[name="theme-color"]')?.setAttribute('content', page)

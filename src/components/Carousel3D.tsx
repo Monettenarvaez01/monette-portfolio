@@ -57,7 +57,7 @@ export default function Carousel3D({ items, onOpen }: Props) {
 
     const scene = new THREE.Scene()
     const camera = new THREE.PerspectiveCamera(40, 1, 0.1, 100)
-    camera.position.set(0, 4.2, 31) // back + above: wide drum sits low-centre, rim reads as an ellipse
+    camera.position.set(0, 4.2, 31) // back + above: wide drum sits low-center, rim reads as an ellipse
     camera.lookAt(0, 0.5, 0)
 
     // ---- barrel geometry: wide, fat, short drum ----

@@ -112,7 +112,7 @@
 
 /* ---------- Tools band ----------
    The label is a title block on the left with the strip running beside it,
-   split by a hairline. A centred eyebrow floating above the strip read as a
+   split by a hairline. A centered eyebrow floating above the strip read as a
    caption; this reads as the band's name. */
 .home__glass--tools { padding: clamp(10px, 1.4vh, 16px) clamp(12px, 1.2vw, 20px); }
 .home__tools {

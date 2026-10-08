@@ -6,7 +6,7 @@ This is the source material for the site. Nothing goes on a page until it is wri
 
 - **Your words, your facts.** Write in your own voice. Rough notes are fine; I'll turn approved notes into page copy and show you the copy before it goes live.
 - **Evidence.** For anything about your experience, note where it comes from: a role, a client, a project. If it is something you are still learning, put it under *Developing*, not *Experience*.
-- **Permission.** Client work, client names and screenshots need the client's permission. If you are not sure, mark it *Anonymise* or leave it out.
+- **Permission.** Client work, client names and screenshots need the client's permission. If you are not sure, mark it *Anonymize* or leave it out.
 - **Results.** Only include a result if you can verify it (you have the numbers or the client confirmed it). Otherwise leave the field empty. Pages show a *Reflection* instead.
 - **Status** for every item: `Draft` → `Ready for review` → `Approved`. Only `Approved` items are published.
 
@@ -66,9 +66,9 @@ Status key: **D** = Draft · **R** = Ready for review · **A** = Approved
 
 Add one row per role. Use "Freelance" or "Client: [industry]" if the client is private.
 
-| Dates (month/year) | Role | Organisation or client type | Responsibilities you actually held | Can be shown publicly? | Status |
+| Dates (month/year) | Role | Organization or client type | Responsibilities you actually held | Can be shown publicly? | Status |
 |---|---|---|---|---|---|
-| | | | | Yes / Anonymise / No | |
+| | | | | Yes / Anonymize / No | |
 | | | | | | |
 | | | | | | |
 
@@ -227,7 +227,7 @@ Collection:        Client Work / Independent Projects / Strategy & Writing
 Label:             Client / Independent / Concept / Essay
 Status:            D / R / A
 
-Who it was for:    [client name] / "Anonymised: [industry, region]" / "Self-initiated"
+Who it was for:    [client name] / "Anonymized: [industry, region]" / "Self-initiated"
 Permission:        Written / Verbal / Not needed (own work) / Not yet - do not publish
 Show client name?  Yes / No
 Dates:             [month/year - month/year]
@@ -262,12 +262,30 @@ Include in the visual gallery (and optional 3D view)?  Yes / No
 
 ---
 
+## 6a. Submitted projects
+
+Entries Monette has supplied. Recorded as given; nothing here is on the site until its status is **A**.
+
+### Client project (private - Scenario B)
+
+Details are held privately by Monette and in the gitignored file
+`src/data/private/`, never in this repository. Scenario B is the default:
+no client work is described or shown until there is written permission.
+When permission arrives, the approved text is added here and the project
+moves to `APPROVED_WORK` in `src/data/work.ts`.
+
+### Project: Building My Personal Brand
+
+Intake: [`docs/intake-personal-brand.md`](intake-personal-brand.md).
+
+---
+
 ## 7. Legal and launch details
 
 | Field | Guidance | Your answer | Status |
 |---|---|---|---|
 | Privacy page | Who runs the site, what the contact form collects (name, email, message), what you do with it, how to ask for deletion. I can draft this from your answers; it should be checked before launch. | | |
 | Site description | One sentence for search results and link previews. | | |
-| Share image | 1200 × 630 px image for link previews (optional; I can make one from the brand colours). | | |
+| Share image | 1200 × 630 px image for link previews (optional; I can make one from the brand colors). | | |
 | Domain | Where the site will live. | | |
 | Contact form service | Leave as email-app for now, or name the provider you choose. | | |

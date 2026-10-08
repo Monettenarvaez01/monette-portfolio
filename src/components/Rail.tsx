@@ -61,7 +61,7 @@ export default function Rail() {
                 rel="noopener noreferrer"
                 aria-label={label}
               >
-                {/* Single-colour silhouettes, tinted by currentColor through a
+                {/* Single-color silhouettes, tinted by currentColor through a
                     CSS mask - same technique as the hero's social row. */}
                 <span
                   className="rail__social-icon"

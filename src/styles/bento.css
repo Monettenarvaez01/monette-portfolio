@@ -113,7 +113,9 @@
 /* Selected work: the three collections as stacked paper sheets. */
 .bento__shelf {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  /* One column per visible collection (two while Client Work is hidden). */
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
   gap: 10px;
   align-items: end;
 }
@@ -140,6 +142,26 @@
 }
 .bento__card:hover .bento__sheet { transform: translateY(-3px); }
 .bento__card:hover .bento__sheet:nth-child(2) { transform: translateY(-6px); }
+
+/* Selected work: the featured project, as a raised sheet. */
+.bento__featured {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 10px;
+}
+.bento__feature {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 16px 18px;
+  border-radius: 16px;
+  background: var(--white);
+  box-shadow: inset 0 0 0 1px var(--line), 0 14px 28px -22px rgba(6, 12, 26, 0.45);
+}
+.bento__feature-title { font-family: var(--font-serif); font-size: clamp(19px, 1.4vw, 23px); font-weight: 560; line-height: 1.15; color: var(--navy); }
+.bento__feature-summary { font-size: 14px; line-height: 1.5; color: var(--muted); }
 
 /* Who I am: the portrait, faded into the card. */
 .bento__portrait {
@@ -232,7 +254,7 @@
   .bento { grid-template-columns: minmax(0, 1fr); grid-auto-rows: auto; }
   .bento__card { padding: 16px; }
   .bento__media { min-height: 120px; }
-  .bento__shelf,
+  .bento__shelf { grid-auto-flow: row; }
   .bento__facts { grid-template-columns: minmax(0, 1fr); }
 }
 

@@ -12,13 +12,14 @@ import {
 import Copy from '@/components/Copy'
 import { profile } from '@/data/profile'
 import { SERVICES } from '@/data/services'
-import { COLLECTIONS, LABEL_KEY } from '@/data/work'
+import { VISIBLE_COLLECTIONS as COLLECTIONS, LABEL_KEY, FEATURED_WORK } from '@/data/work'
+import WorkLabelChip from '@/components/work/WorkLabelChip'
 
 /**
  * Home's bento: one card per thing a founder needs to know, each a link to
  * where it is told in full.
  *
- *   Work          the three collections - client, independent, strategy & writing
+ *   Work          the featured project(s); the three collections until one exists
  *   Who I am      the portrait, into About
  *   How I think   a line in Monette's own words, into About's method
  *   What I do     the four services, into Services
@@ -48,18 +49,35 @@ function CardHead({ Icon, title, desc }: { Icon: typeof FolderOpen; title: strin
 export default function HomeBento() {
   return (
     <nav className="bento bento--home" aria-label="Explore the portfolio">
-      <Link to="/work" className="bento__card bento__card--work">
+      {/* One featured project: the card opens it. Several: the card opens
+          Work. None yet: it shows the three collections. */}
+      <Link
+        to={FEATURED_WORK.length === 1 ? `/work/${FEATURED_WORK[0].slug}` : '/work'}
+        className="bento__card bento__card--work"
+      >
         <CardHead Icon={FolderOpen} title="Selected work" desc="PLACEHOLDER - one line on the work you share here." />
-        <ul className="bento__media bento__shelf" role="list" aria-label="Work collections">
-          {COLLECTIONS.map((c) => (
-            <li key={c.id} className="bento__sheet">
-              <span className={`ed-label ed-label--${c.label}`}>
-                {LABEL_KEY.find((k) => k.label === c.label)?.name}
-              </span>
-              <span className="bento__sheet-title">{c.navLabel}</span>
-            </li>
-          ))}
-        </ul>
+        {FEATURED_WORK.length > 0 ? (
+          <ul className="bento__media bento__featured" role="list" aria-label="Featured work">
+            {FEATURED_WORK.map((w) => (
+              <li key={w.slug} className="bento__feature">
+                <WorkLabelChip item={w} />
+                <span className="bento__feature-title">{w.title}</span>
+                <span className="bento__feature-summary">{w.summary}</span>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <ul className="bento__media bento__shelf" role="list" aria-label="Work collections">
+            {COLLECTIONS.map((c) => (
+              <li key={c.id} className="bento__sheet">
+                <span className={`ed-label ed-label--${c.label}`}>
+                  {LABEL_KEY.find((k) => k.label === c.label)?.name}
+                </span>
+                <span className="bento__sheet-title">{c.navLabel}</span>
+              </li>
+            ))}
+          </ul>
+        )}
       </Link>
 
       <Link to="/about" className="bento__card bento__card--about">

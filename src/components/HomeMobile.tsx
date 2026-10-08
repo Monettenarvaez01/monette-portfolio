@@ -3,6 +3,8 @@ import { FolderOpen, Stack, Lightbulb, User, EnvelopeSimple, type Icon } from '@
 import Copy from '@/components/Copy'
 import { profile } from '@/data/profile'
 import QuickMenu from './QuickMenu'
+import WorkCard from '@/components/work/WorkCard'
+import { FEATURED_WORK } from '@/data/work'
 
 /**
  * Home on a phone, the parts the rail and the bento carry on desktop:
@@ -10,7 +12,8 @@ import QuickMenu from './QuickMenu'
  *   HomeProfile  avatar, name, lead role and the QuickMenu (theme +
  *                accessibility) - the rail's identity block, laid flat
  *   HomeStats    three practical facts (profile.stats)
- *   HomeExplore  one tile per part of the story, in a snap row
+ *   HomeExplore  one tile per part of the story, in a snap row, then the
+ *                featured project(s)
  */
 
 export function HomeProfile() {
@@ -74,6 +77,21 @@ export function HomeExplore() {
           </li>
         ))}
       </ul>
+
+      {FEATURED_WORK.length > 0 && (
+        <>
+          <div className="hsec">
+            <h2 className="hsec__title">Featured work</h2>
+          </div>
+          <ul className="hfeatured" role="list">
+            {FEATURED_WORK.map((w) => (
+              <li key={w.slug}>
+                <WorkCard item={w} />
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
     </>
   )
 }

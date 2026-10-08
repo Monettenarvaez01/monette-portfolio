@@ -2,7 +2,7 @@
  * ThemeGlyph - one SVG that is a crescent moon in light mode and a sun in
  * dark, morphing between them instead of swapping icons. The moon is the sun's
  * disc with a second "cutter" circle laid over it in the button's own
- * background colour (--tg-bg); toggling slides the cutter clear, shrinks the
+ * background color (--tg-bg); toggling slides the cutter clear, shrinks the
  * disc, and fans eight rays in. A painted cutter instead of an SVG mask
  * because Chromium ignores CSS transforms on mask content.
  * theme-glyph.css drives every move off `data-theme` on the svg.

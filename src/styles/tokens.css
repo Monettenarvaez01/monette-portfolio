@@ -1,7 +1,7 @@
 :root {
   /* Brand palette - Monette Oledan: navy, coral, cream and warm neutrals.
      Contrast ratios are WCAG 2.x, measured against --cream unless noted.
-     Coral is a FILL colour: it fails as text on light grounds (2.7:1), so
+     Coral is a FILL color: it fails as text on light grounds (2.7:1), so
      coral text always uses --coral-ink, and anything sitting on a coral fill
      uses --on-coral (navy in both themes, 5.5:1). Never white on coral. */
   --navy:       #0B1E3F;   /* primary text, dark surfaces - 14.95:1 */

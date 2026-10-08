@@ -4,7 +4,7 @@ import Copy from '@/components/Copy'
 import { profile } from '@/data/profile'
 
 /**
- * About. Monette's story is the centre of the page, then the three things the
+ * About. Monette's story is the center of the page, then the three things the
  * site exists to say:
  *
  *   01 Who I am      story, values, the journey so far
@@ -38,8 +38,8 @@ const METHOD = [
 ]
 
 const JOURNEY = [
-  { when: 'PLACEHOLDER - dates', role: 'PLACEHOLDER - role', where: 'PLACEHOLDER - organisation or client type', what: 'PLACEHOLDER - the responsibilities you held.' },
-  { when: 'PLACEHOLDER - dates', role: 'PLACEHOLDER - role', where: 'PLACEHOLDER - organisation or client type', what: 'PLACEHOLDER - the responsibilities you held.' },
+  { when: 'PLACEHOLDER - dates', role: 'PLACEHOLDER - role', where: 'PLACEHOLDER - organization or client type', what: 'PLACEHOLDER - the responsibilities you held.' },
+  { when: 'PLACEHOLDER - dates', role: 'PLACEHOLDER - role', where: 'PLACEHOLDER - organization or client type', what: 'PLACEHOLDER - the responsibilities you held.' },
 ]
 
 const DEVELOPING = ['PLACEHOLDER - a strategic skill you are building, and how', 'PLACEHOLDER - another skill you are building']

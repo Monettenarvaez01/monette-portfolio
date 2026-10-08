@@ -173,7 +173,7 @@
 
      `transform-box: fill-box` is load-bearing: without it an SVG child's
      transform-origin resolves against the whole user-space viewport, not the
-     shape, and every "scale from the centre" lands somewhere else entirely. */
+     shape, and every "scale from the center" lands somewhere else entirely. */
   .ricon [class^='ricon__'] {
     transform-box: fill-box;
     transform-origin: center;

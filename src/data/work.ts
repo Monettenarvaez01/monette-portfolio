@@ -74,19 +74,69 @@ export type GalleryImage = {
   caption?: string
 }
 
+/** A titled group of responsibilities on a project page. */
+export type ResponsibilityGroup = { title: string; items: string[] }
+
 export type WorkItem = {
   slug: string
   collection: CollectionId
   label: WorkLabel
+  /** Shown after the label, e.g. "Anonymized" for a client kept private. */
+  labelNote?: string
   title: string
-  /** One line on what it is and Monette's role. */
+  /** One line on what it is and Monette's role. Used on cards. */
   summary: string
-  /** Optional cover image. */
+  /** Shown on Home; also in a Featured strip on Work once two or more are featured. */
+  featured?: boolean
+  /** Who the work was for, as it may be shown publicly. */
+  client: string
+  /** Monette's actual role, exactly as approved. */
+  role: string
+  dates: string
+  responsibilities: ResponsibilityGroup[]
+  /**
+   * Conditions still open before this project may go live. While any remain,
+   * the page shows them as a marked placeholder note.
+   */
+  pending?: string[]
+  /** Optional cover image - only with the client's permission. */
   cover?: GalleryImage
 }
 
-/** Projects, newest first. Add only real work Monette has supplied. */
-export const WORK: WorkItem[] = []
+/**
+ * Projects cleared for publication, newest first. Add only real work Monette
+ * has supplied and approved (docs/content-inventory.md), with every condition
+ * confirmed and permission in writing where a client is involved.
+ */
+const APPROVED_WORK: WorkItem[] = []
+
+/**
+ * Private, unpublished projects. Each is a file in src/data/private/, which
+ * is gitignored: client details never enter the repository. They load only in
+ * `npm run dev` or a review build made with VITE_SHOW_UNPUBLISHED=true. In a
+ * normal build the folder is not read at all (the glob below sits behind a
+ * compile-time constant), so nothing private can reach the shipped files.
+ */
+export const SHOW_UNPUBLISHED = import.meta.env.DEV || import.meta.env.VITE_SHOW_UNPUBLISHED === 'true'
+
+const PRIVATE_WORK: WorkItem[] = SHOW_UNPUBLISHED
+  ? Object.values(import.meta.glob<{ default: WorkItem[] }>('./private/*.ts', { eager: true })).flatMap((m) => m.default)
+  : []
+
+export const WORK: WorkItem[] = [...APPROVED_WORK, ...PRIVATE_WORK]
+
+/**
+ * Collections shown publicly. Client Work stays hidden until there is at least
+ * one approved client project (Scenario B: no client work is described
+ * without written permission). The other collections always show.
+ */
+export const VISIBLE_COLLECTIONS = COLLECTIONS.filter((c) => c.id !== 'client' || WORK.some((w) => w.collection === 'client'))
+/** The label key, without the Client label while no client work is shown. */
+export const VISIBLE_LABEL_KEY = LABEL_KEY.filter((k) => k.label !== 'client' || WORK.some((w) => w.label === 'client'))
+
+export const workBySlug = (slug: string | undefined) => WORK.find((w) => w.slug === slug)
+export const FEATURED_WORK = WORK.filter((w) => w.featured)
+export const labelName = (label: WorkLabel) => LABEL_KEY.find((k) => k.label === label)?.name ?? ''
 
 /**
  * Creative pieces for the visual gallery on /work (social posts, carousels,

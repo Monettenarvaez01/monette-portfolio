@@ -54,7 +54,10 @@ npm run lint       # ESLint with the TypeScript parser and the React hooks rules
 
 ## Content
 
-All page content comes from [`docs/content-inventory.md`](docs/content-inventory.md). Only items marked Approved there are published; everything else stays a visible placeholder.
+All page content comes from [`docs/content-inventory.md`](docs/content-inventory.md). Only items marked Approved there are published; everything else stays a visible placeholder. If client content can't be shown, see [`docs/alternative-portfolio-plan.md`](docs/alternative-portfolio-plan.md).
+
+- **Unpublished projects** are files in `src/data/private/` (ignored by git). They show in `npm run dev` and in a private review build (`VITE_SHOW_UNPUBLISHED=true npm run build`); a normal `npm run build` never reads them.
+- **Client details and media** never go in the repository. Keep them in `private/` or `src/data/private/` (both ignored by git).
 
 ## Pre-launch checklist
 
@@ -70,6 +73,8 @@ All page content comes from [`docs/content-inventory.md`](docs/content-inventory
 - [ ] Reduced motion (OS setting and the site switch) on all five pages
 - [ ] Automated accessibility check (axe) clean on all five pages, both themes
 - [ ] 3D gallery: offered only on desktop with motion allowed; grid and lightbox work without it
+- [ ] Normal build (no `VITE_SHOW_UNPUBLISHED`): nothing from `src/data/private/` ships
+- [ ] No client media in `public/` or anywhere in the repository
 - [ ] LICENSE and attribution notices intact
 
 ## Credits

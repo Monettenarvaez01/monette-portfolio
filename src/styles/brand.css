@@ -1,7 +1,7 @@
 /* ============================================
    BRAND - Monette Oledan's editorial layer
    Loads after apple.css and mobile-pass.css and before perf.css, so it wins
-   on type and colour and the perf tiers still switch things off last.
+   on type and color and the perf tiers still switch things off last.
 
    Sections:
      1  Headline serif   which titles take Fraunces, and how it is set
@@ -9,7 +9,7 @@
      3  Work labels      the provenance tag every project card carries
      4  Placeholders     how unfilled content is marked while we build
 
-   Every colour here is a token from tokens.css, so the dark theme and the
+   Every color here is a token from tokens.css, so the dark theme and the
    high-contrast switch (a11y.css) follow without extra rules.
    ============================================ */
 

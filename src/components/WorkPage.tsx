@@ -2,7 +2,8 @@ import { Link } from 'react-router-dom'
 import { ArrowUpRight } from '@/components/slab'
 import Copy from '@/components/Copy'
 import WorkGallery from '@/components/WorkGallery'
-import { COLLECTIONS, LABEL_KEY, WORK, CREATIVE_GALLERY } from '@/data/work'
+import WorkCard from '@/components/work/WorkCard'
+import { VISIBLE_COLLECTIONS as COLLECTIONS, VISIBLE_LABEL_KEY as LABEL_KEY, WORK, CREATIVE_GALLERY, FEATURED_WORK } from '@/data/work'
 
 /**
  * Work: the portfolio in three collections - Client Work, Independent
@@ -10,9 +11,9 @@ import { COLLECTIONS, LABEL_KEY, WORK, CREATIVE_GALLERY } from '@/data/work'
  * label key at the top), so commissioned, self-initiated and concept work
  * are never confused.
  *
- * The project lists are empty until Monette supplies real work; each
- * collection then shows a marked placeholder instead of an invented sample.
- * Project cards and case-study pages arrive in Phase 4.
+ * Only approved projects appear (data/work.ts). Featured projects lead the
+ * page; a collection with no approved work shows a marked placeholder
+ * instead of an invented sample. Each card opens its project page.
  */
 export default function WorkPage() {
   return (
@@ -37,6 +38,23 @@ export default function WorkPage() {
           ))}
         </ol>
       </nav>
+
+      {/* A separate Featured strip only once there are two or more approved
+          featured projects; until then each project sits in its collection. */}
+      {FEATURED_WORK.length >= 2 && (
+        <section className="page__section" aria-labelledby="featured-title">
+          <h2 className="ed-eyebrow" id="featured-title">
+            Featured
+          </h2>
+          <ul className="workcards workcards--featured" role="list">
+            {FEATURED_WORK.map((w) => (
+              <li key={w.slug}>
+                <WorkCard item={w} />
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
 
       <section className="page__key" aria-labelledby="key-title">
         <h2 className="ed-eyebrow" id="key-title">
@@ -77,12 +95,8 @@ export default function WorkPage() {
             ) : (
               <ul className="workcards" role="list">
                 {items.map((w) => (
-                  <li key={w.slug} className="workcard">
-                    <span className={`ed-label ed-label--${w.label}`}>
-                      {LABEL_KEY.find((k) => k.label === w.label)?.name}
-                    </span>
-                    <h3 className="workcard__title">{w.title}</h3>
-                    <p className="workcard__summary">{w.summary}</p>
+                  <li key={w.slug}>
+                    <WorkCard item={w} />
                   </li>
                 ))}
               </ul>

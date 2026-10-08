@@ -138,24 +138,84 @@
 }
 .empty__body { max-width: 60ch; font-size: 15px; line-height: 1.6; color: var(--muted); }
 
-/* ---------- Work cards (filled in Phase 4) ---------- */
+/* ---------- Work cards ----------
+   A project card is one link: label, serif title, summary, "View project". */
 .workcards {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 16px;
 }
+.workcards--featured { grid-template-columns: repeat(auto-fill, minmax(min(100%, 420px), 1fr)); }
 .workcard {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 10px;
-  padding: 20px;
+  height: 100%;
+  padding: clamp(18px, 1.8vw, 26px);
+  border-radius: var(--radius-card);
+  background: var(--paper);
+  box-shadow: inset 0 0 0 1px var(--line-strong);
+  color: inherit;
+  text-decoration: none;
+  transition: box-shadow var(--dur-fast) var(--ease-out), transform var(--dur-med) var(--ease-spring);
+}
+.workcard:hover { box-shadow: inset 0 0 0 1px var(--coral); transform: translateY(-2px); }
+.workcard:focus-visible { outline: 2px solid var(--coral-ink); outline-offset: 3px; }
+.workcard__title { font-family: var(--font-serif); font-size: clamp(21px, 1.7vw, 26px); font-weight: 560; line-height: 1.15; color: var(--navy); }
+.workcard__summary { font-size: 15px; line-height: 1.55; color: var(--muted); }
+.workcard__more {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--coral-ink);
+}
+@media (prefers-reduced-motion: reduce) {
+  .workcard { transition: none; }
+  .workcard:hover { transform: none; }
+}
+
+/* ---------- Project page ---------- */
+.project__crumbs { margin-bottom: -20px; }
+.project__back,
+.project__all {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--coral-ink);
+  text-decoration: none;
+}
+.project__back:hover,
+.project__all:hover { text-decoration: underline; }
+.project .page__head { align-items: flex-start; }
+.project__pending { align-self: flex-start; padding: 8px 12px; }
+.project__facts { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.project__facts dd { font-weight: 500; line-height: 1.45; }
+.project__groups {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+.project__group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: clamp(18px, 1.8vw, 26px);
   border-radius: var(--radius-card);
   background: var(--paper);
   box-shadow: inset 0 0 0 1px var(--line-strong);
 }
-.workcard__title { font-family: var(--font-serif); font-size: 22px; font-weight: 560; color: var(--navy); }
-.workcard__summary { font-size: 14.5px; line-height: 1.55; color: var(--muted); }
+.project__group-title { font-family: var(--font-serif); font-size: clamp(20px, 1.5vw, 24px); font-weight: 560; line-height: 1.2; color: var(--navy); }
+@media (max-width: 720px) {
+  .project__groups { grid-template-columns: minmax(0, 1fr); }
+}
 
 /* ---------- Services ---------- */
 .svc--lead { padding: clamp(20px, 3vw, 40px); }
